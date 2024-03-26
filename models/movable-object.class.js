@@ -10,6 +10,8 @@ class MovableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 2.5;
+    energy = 100;
+    lastHit = 0;
 
     applyGravity(){
         setInterval(() => {
@@ -44,13 +46,42 @@ class MovableObject {
             ctx.stroke();
         }
     }
+    
+    isColliding(mo) {
+        return this.x + this.width > mo.x &&
+            this.y + this.height > mo.y &&
+            this.x < mo.x &&
+            this.y < mo.y + mo.height
+    }
 
+    /*
     isColliding (obj) {
         return  (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) &&
                 (this.y + this.offsety + this.height) >= obj.y &&
                 (this.y + this.offsety) <= (obj.height) &&
                 obj.onCollisionCourse;
     }
+    */
+
+    hit() {
+        this.energy -= 5;
+        if(this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit; // Difference in mili second
+        timepassed = timepassed / 1000; // Difference in second
+        return timepassed < 1;
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
+
     /**
      * 
      * @param {Array} arr - ['img/image1.png', 'img/image2.png', 'img/image3.png',......] 
@@ -65,7 +96,7 @@ class MovableObject {
 
 
     playAnimation(images){
-            let i = this.currentImage % this.IMAGE_WALKING.length; //let i = 0, 1, 2, 3, 4 , 5, 0 
+            let i = this.currentImage % images.length; //let i = 0, 1, 2, 3, 4 , 5, 0 
             // Wen der Array durch ist in dem Fahl nach 5 bild kommt bild 0 wieder. 
             let path = images[i];
             this.img = this.imageCache[path];
