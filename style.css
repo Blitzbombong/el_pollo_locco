@@ -1,13 +1,29 @@
+@font-face {
+    font-family: 'dissenso';
+    src: url('levels/fonds/dissenso.ttf');
+}
+
+
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('img/background\ .jpg');
+    background-image: url('img/background.jpg');
     background-size: cover;
     height: 100vh;
+    font-family: 'dissenso', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 100px;
+    letter-spacing: 6px;
+    text-shadow: 3px 6px 4px rgba(0, 0, 0, 0.5);
+    color:rgb(94,74,8);
 }
 
 canvas {
     background-color: black;
     border-radius: 5px;
+    border: 2px solid rgb(167,152,148);
 }
