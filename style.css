@@ -2,8 +2,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('img/background\ .jpg');
+    background-size: cover;
+    height: 100vh;
 }
 
 canvas {
     background-color: black;
+    border-radius: 5px;
 }
