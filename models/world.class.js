@@ -7,9 +7,18 @@ class World {
     ];
 
     clouds = [
-        new Clouds(),
-        new Clouds()
+        new Clouds('img/5_background/layers/4_clouds/1.png'),
+        new Clouds('img/5_background/layers/4_clouds/2.png')
     ];
+
+    coins = [
+        new Coins(),
+        new Coins(),
+        new Coins(),
+        new Coins(),
+        new Coins(),
+        new Coins()
+    ]
 
     backgroundObject = [
         new BackgroundObject('img/5_background/layers/air.png', 0),
@@ -17,6 +26,8 @@ class World {
         new BackgroundObject('img/5_background/layers/2_second_layer/1.png', 0),
         new BackgroundObject('img/5_background/layers/1_first_layer/1.png', 0)
     ];
+
+
 
     canvas;
     ctx;
@@ -34,6 +45,7 @@ class World {
 
         this.addObjectsToMap(this.backgroundObject);
         this.addObjectsToMap(this.clouds);
+        this.addObjectsToMap(this.coins);
         this.addToMap(this.character);
         this.addObjectsToMap(this.enemies);
        
