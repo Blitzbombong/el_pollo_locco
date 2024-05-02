@@ -12,7 +12,10 @@ class World {
     ];
 
     backgroundObject = [
-        new BackgroundObject('img/5_background/layers/1_first_layer/1.png', 0, 80)
+        new BackgroundObject('img/5_background/layers/air.png', 0),
+        new BackgroundObject('img/5_background/layers/3_third_layer/1.png', 0),
+        new BackgroundObject('img/5_background/layers/2_second_layer/1.png', 0),
+        new BackgroundObject('img/5_background/layers/1_first_layer/1.png', 0)
     ];
 
     canvas;
@@ -30,8 +33,8 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height) // Clear the Canvas.
 
         this.addObjectsToMap(this.backgroundObject);
-        this.addToMap(this.character);
         this.addObjectsToMap(this.clouds);
+        this.addToMap(this.character);
         this.addObjectsToMap(this.enemies);
        
 
