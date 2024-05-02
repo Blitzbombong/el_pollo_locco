@@ -18,7 +18,13 @@ class World {
         new Coins(),
         new Coins(),
         new Coins()
-    ]
+    ];
+
+    salsaBottle = [
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle()
+    ];
 
     backgroundObject = [
         new BackgroundObject('img/5_background/layers/air.png', 0),
@@ -46,6 +52,7 @@ class World {
         this.addObjectsToMap(this.backgroundObject);
         this.addObjectsToMap(this.clouds);
         this.addObjectsToMap(this.coins);
+        this.addObjectsToMap(this.salsaBottle);
         this.addToMap(this.character);
         this.addObjectsToMap(this.enemies);
        
