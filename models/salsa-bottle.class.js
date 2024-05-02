@@ -1,5 +1,8 @@
 class SalsaBottle extends MovableObject {
 
+    width = 50;
+    height = 70;
+    
     constructor(){
         super().loadImage('img/6_salsa_bottle/salsa_bottle.png');
 
