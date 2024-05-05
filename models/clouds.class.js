@@ -8,6 +8,19 @@ class Clouds extends MovableObject {
     constructor(imagePath) {
         super().loadImage(imagePath);
 
-        this.x = 0 + Math.random() * 500;
+        this.x = 0 + Math.random() * 500; // Zahl zwischen 200 und 700
+
+        this.animate();
+    }
+
+    animate() {
+        setInterval(() => {
+            this.x -= 0.15;
+            if (this.x < -this.width) {
+
+                this.x = 0 + Math.random() * 700;
+            }
+            
+        }, 1000 / 60);
     }
 }
