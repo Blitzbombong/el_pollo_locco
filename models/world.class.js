@@ -23,6 +23,9 @@ class World {
     salsaBottle = [
         new SalsaBottle(),
         new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle(),
+        new SalsaBottle(),
         new SalsaBottle()
     ];
 
