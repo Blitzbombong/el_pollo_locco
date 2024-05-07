@@ -13,7 +13,7 @@ class Chicken extends MovableObject {
         super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
 
-        this.x = 200 + Math.random() * 500; // Plaziert die Chiken auf zufahlige Psition was das Math.random ausrechnet.
+        this.x = 200 + Math.random() * 2500; // Plaziert die Chiken auf zufahlige Psition was das Math.random ausrechnet.
         this.speed = 0.15 + Math.random() * 0.25;
 
         this.animate();
