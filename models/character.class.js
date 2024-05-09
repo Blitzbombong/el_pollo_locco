@@ -1,4 +1,4 @@
-class Cahracter extends MovableObject {
+class Cahracter extends MovableObject  {
    width = 120;
    height = 220;
    y = 209;
