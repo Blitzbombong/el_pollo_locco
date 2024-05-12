@@ -3,6 +3,7 @@ class Cahracter extends MovableObject  {
    height = 220;
    y = 209;
    speed = 10;
+   world;
    IMAGES_WALKING = [
     'img/2_character_pepe/2_walk/W-21.png',
     'img/2_character_pepe/2_walk/W-22.png',
@@ -11,9 +12,6 @@ class Cahracter extends MovableObject  {
     'img/2_character_pepe/2_walk/W-25.png',
     'img/2_character_pepe/2_walk/W-26.png'
    ];
-
-   world;
-
 
     constructor(){
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
@@ -34,14 +32,13 @@ class Cahracter extends MovableObject  {
                 this.x -= this.speed;
                 this.otherDirection = true;
             }
-            this.world.camera_x = -this.x;
+            this.world.camera_x = - this.x;
         }, 1000 / 60);
 
 
         setInterval(() => {
             // Animation nach Rechts oder nach Links
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                this.x += this.speed;
 
                 //Walk animation
                 let i = this.currentImage % this.IMAGES_WALKING.length; // let i = 7 % 6; => 1. Rest 1
