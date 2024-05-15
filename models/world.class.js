@@ -4,6 +4,7 @@ class World {
     clouds = level1.clouds;
     coins = level1.coins;
     salsaBottle = level1.salsaBottle;
+    endboss = level1.endboss;
     backgroundObject = level1.backgroundObject;
    
 
@@ -39,8 +40,10 @@ class World {
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.salsaBottle);
+        this.addObjectsToMap(this.level.endboss);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
+        
        
         this.ctx.translate(-this.camera_x, 0);
         
