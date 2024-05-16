@@ -1,7 +1,7 @@
 class Cahracter extends MovableObject  {
    width = 120;
    height = 220;
-   y = 209;
+   y = 99;
    speed = 10;
    world;
    IMAGES_WALKING = [
@@ -17,6 +17,7 @@ class Cahracter extends MovableObject  {
     constructor(){
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
+        this.applyGravity();
 
         this.animate();
     }

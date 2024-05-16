@@ -8,6 +8,25 @@ class MovableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
+    speedY = 0;
+    acceletation = 2.5;
+
+
+    // Gravitation lasst gegenstande runter fahlen
+    applyGravity(){
+        setInterval(() => {
+            if (this.isAboveGround()){
+                this.y -= this.speedY;
+                this.speedY -= this.acceletation;
+            }
+        }, 1000 / 25);
+    }
+
+
+    // Pruft ob das Object auf dem Boden ist
+    isAboveGround() {
+        return this.y < 200;
+    }
 
 
     // loadImage('img/test.png')

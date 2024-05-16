@@ -22,11 +22,12 @@ class Chicken extends MovableObject {
 
     animate() {
         this.moveLeft();
-
+        
         setInterval(() => {
             let i = this.currentImage % this.IMAGES_WALKING.length; // let i = 7 % 6; => 1. Rest 1
             // i = 0, 1, 2, 3, 4, 5, , 0, 1 .... wiederholt die Zahlen von 0 bis 5
             this.playAnimation(this.IMAGES_WALKING);
+
         }, 300);  
     }
 
