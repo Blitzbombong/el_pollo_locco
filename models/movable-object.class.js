@@ -15,7 +15,7 @@ class MovableObject {
     // Gravitation lasst gegenstande runter fahlen
     applyGravity(){
         setInterval(() => {
-            if (this.isAboveGround()){
+            if (this.isAboveGround() || this.speedY > 0){
                 this.y -= this.speedY;
                 this.speedY -= this.acceletation;
             }
@@ -49,15 +49,11 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log('Moving right')
+        this.x += this.speed;
     }
 
     moveLeft() {
-        setInterval(() => {
-           this.x -= this.speed;
-            
-        }, 1000 / 60);
-
+        this.x -= this.speed;
     }
 
 
@@ -67,6 +63,10 @@ class MovableObject {
                 let path = images[i];
                 this.img = this.imageCache[path];
                 this.currentImage++;
+    }
+
+    jump(){
+        this.speedY = 30;
     }
     
 
