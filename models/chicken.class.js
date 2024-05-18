@@ -8,7 +8,9 @@ class Chicken extends MovableObject {
         'img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
         'img/3_enemies_chicken/chicken_small/1_walk/3_w.png'
     ];
-    
+
+    chicken_sound = new Audio('audio/chiken.mp3');
+
 
 
     constructor(){
@@ -26,6 +28,9 @@ class Chicken extends MovableObject {
         // Walking Left
         setInterval(() => {   
             this.moveLeft();
+            this.chicken_sound.play();
+            this.chicken_sound.volume = 0.03;
+
         }, 1000 / 60);
 
         setInterval(() => {
