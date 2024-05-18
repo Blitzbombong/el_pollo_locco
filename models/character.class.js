@@ -47,7 +47,6 @@ class Cahracter extends MovableObject  {
             }
 
             if (this.world.keyboard.LEFT && this.x > -600 ) {
-                this.x -= this.speed;
                 this.moveLeft();
                 this.walking_sound.play();
                 this.otherDirection = true;
