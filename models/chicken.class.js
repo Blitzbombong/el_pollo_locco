@@ -19,6 +19,8 @@ class Chicken extends MovableObject {
 
         this.x = 200 + Math.random() * 2500; // Plaziert die Chiken auf zufahlige Psition was das Math.random ausrechnet.
         this.speed = 0.15 + Math.random() * 0.25;
+        this.chicken_sound.play();
+        this.chicken_sound.volume = 0.03;
 
         this.animate();
     }
@@ -28,8 +30,6 @@ class Chicken extends MovableObject {
         // Walking Left
         setInterval(() => {   
             this.moveLeft();
-            this.chicken_sound.play();
-            this.chicken_sound.volume = 0.03;
 
         }, 1000 / 60);
 

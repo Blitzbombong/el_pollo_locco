@@ -70,6 +70,9 @@ class Cahracter extends MovableObject  {
                 if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 //Walk animation
                 this.playAnimation(this.IMAGES_WALKING);
+                } else {
+                    // Setzt das Standbild, wenn keine Taste gedrückt wird
+                    this.loadImage('img/2_character_pepe/1_idle/idle/I-1.png');
                 }
             }       
         }, 50);  
