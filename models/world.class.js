@@ -1,5 +1,5 @@
 class World {
-    character = new Cahracter();
+    character = new Character();
     enemies = level1.enemies;
     clouds = level1.clouds;
     coins = level1.coins;
@@ -22,11 +22,23 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.checkCollisions();
     }
 
 
     setWorld() {
         this.character.world = this;
+    }
+
+    // Pruft Kolisionen Character || Chiken
+    checkCollisions() {
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+               if (this.character.isColliding(enemy)) {
+                    console.log('Collision with Character', enemy);
+               }
+            });
+        }, 100 ) ;
     }
 
 
@@ -65,17 +77,32 @@ class World {
     addToMap(mo) {
         // Bild Spiegeln
         if(mo.otherDirection) {
-            this.ctx.save();
-            this.ctx.translate(mo.width, 0);
-            this.ctx.scale(-1, 1);
-            mo.x = mo.x * -1;
-        }
+            this.flipImage(mo);
+          }
 
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+        // Function ist in MovableObject devieniert
+        mo.draw(this.ctx);
+        mo.drawFrame(this.ctx);
+
         // Bild wieder zuruck setzen
         if(mo.otherDirection) {
-            mo.x = mo.x * -1;
-            this.ctx.restore();
+           this. flipImageBack(mo);
         }
-    };
+    }
+
+
+    flipImage(mo) {
+        this.ctx.save();
+        this.ctx.translate(mo.width, 0);
+        this.ctx.scale(-1, 1);
+        mo.x = mo.x * -1;
+    }
+
+
+    flipImageBack(mo) {
+        mo.x = mo.x * -1;
+        this.ctx.restore();
+    }
+
+
 }

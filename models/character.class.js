@@ -1,9 +1,10 @@
-class Cahracter extends MovableObject  {
+class Character extends MovableObject  {
    width = 120;
    height = 220;
    y = 99;
    speed = 10;
    world;
+
    IMAGES_WALKING = [
     'img/2_character_pepe/2_walk/W-21.png',
     'img/2_character_pepe/2_walk/W-22.png',
@@ -26,7 +27,14 @@ class Cahracter extends MovableObject  {
    ];
    walking_sound = new Audio('audio/running1.mp3');
    jumping_sound = new Audio('audio/jumping.mp3');
+   offset = {
+        top: 120,
+        left: 30,
+        right: 40,
+        bottom: 30
+   }
 
+   
     constructor(){
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
