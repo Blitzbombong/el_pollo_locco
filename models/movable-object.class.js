@@ -11,6 +11,7 @@ class MovableObject {
     speedY = 0;
     acceletation = 2.5;
     energy = 100;
+    lastHit = 0;
     offset = {
         top: 0,
         left: 0,
@@ -75,8 +76,20 @@ class MovableObject {
         this.energy -= 5;
         if(this.energy < 0){
             this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
         }
+    }
 
+    isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit; // Differenz in mili Secunden
+        timepassed = timepassed / 1000; // Differenz in Sekunden
+        return timepassed < 0.5; 
+    
+    }
+
+    isDead() {
+        return this.energy == 0;
     }
 
     
@@ -104,7 +117,7 @@ class MovableObject {
 
 
     playAnimation(images) {
-        let i = this.currentImage % this.IMAGES_WALKING.length; // let i = 7 % 6; => 1. Rest 1
+        let i = this.currentImage % images.length; // let i = 7 % 6; => 1. Rest 1
                 // i = 0, 1, 2, 3, 4, 5, , 0, 1 .... wiederhlt die Zahlen von 0 bis 5
                 let path = images[i];
                 this.img = this.imageCache[path];
