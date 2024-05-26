@@ -1,5 +1,10 @@
 class Coins extends MovableObject {
-    
+    offset = {
+        top: 20,
+        left: 20,
+        right: 20,
+        bottom: 20
+   }
     y = 300;
     x = 2500;
     IMAGE_COIN = [
@@ -8,7 +13,7 @@ class Coins extends MovableObject {
     ]
 
     constructor() {
-        super().loadImage('img/8_coin/coin_1.png')
+        super().loadImage('img/8_coin/coin_1.png' )
         this.loadImages(this.IMAGE_COIN);
 
         this.x = 200 + Math.random() * 2001; 
