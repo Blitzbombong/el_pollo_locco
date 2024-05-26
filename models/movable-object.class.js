@@ -1,11 +1,4 @@
-class MovableObject {
-    x = 150;
-    y = 300;
-    img;
-    height = 100;
-    width = 100;
-    imageCache = {};
-    currentImage = 0;
+class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
@@ -34,31 +27,6 @@ class MovableObject {
     // Pruft ob das Object auf dem Boden ist
     isAboveGround() {
         return this.y < 200;
-    }
-
-
-    // loadImage('img/test.png')
-    loadImage(path) {
-        this.img = new Image(); // das geleiche ist das - this.img = document.getElementById('image') <img id="image" src>
-        this.img.src = path;
-    }
-
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
-
-
-    drawFrame(ctx) {
-        // Mit diesem befahl wir der Rand um Character und Chicken animiert
-        if(this instanceof Character || this instanceof Chicken) {
-            // Rand um die charaktere animieren - spater muss man die wieder entfernen
-            ctx.beginPath();
-            ctx.lineWidth = '4';
-            ctx.strokeStyle = 'red';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
     }
 
 
@@ -92,20 +60,6 @@ class MovableObject {
         return this.energy == 0;
     }
 
-    
-
-    /**
-     * 
-     * @param {Array} arr - ['img/image1.png', 'img/image2.png', .... ] 
-     */
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img; 
-        });
-        
-    }
 
     moveRight() {
         this.x += this.speed;
@@ -126,9 +80,5 @@ class MovableObject {
 
     jump(){
         this.speedY = 30;
-    } 
-
-    
-    
-    
+    }    
 }

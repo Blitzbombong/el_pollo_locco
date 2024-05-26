@@ -33,7 +33,7 @@ canvas {
 }
 
 /* Smarphones --------*/
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
     }

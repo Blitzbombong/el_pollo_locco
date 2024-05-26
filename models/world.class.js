@@ -1,11 +1,15 @@
 class World {
     character = new Character();
+    statusBarHealt = new StatusBarHealt();
+    statusBarCoin = new StatusBarCoin();
+    statusBarBottle = new StatusBarBottle();
     enemies = level1.enemies;
     clouds = level1.clouds;
     coins = level1.coins;
     salsaBottle = level1.salsaBottle;
     endboss = level1.endboss;
     backgroundObject = level1.backgroundObject;
+    
    
 
 
@@ -36,7 +40,8 @@ class World {
             this.level.enemies.forEach((enemy) => {
                if (this.character.isColliding(enemy)) {
                     this.character.hit();
-                    console.log('Collision with Character, energy', this.character.energy);  
+                    this.statusBarHealt.setPercetage(this.character.energy)
+                    /*console.log('Collision with Character, energy', this.character.energy);*/  
                }
             });
         }, 100 ) ;
@@ -50,6 +55,15 @@ class World {
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.backgroundObject);
+       
+
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToMap(this.statusBarHealt);
+        this.addToMap(this.statusBarCoin);
+        this.addToMap(this.statusBarBottle);
+        this.ctx.translate(this.camera_x, 0);
+
+
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.salsaBottle);
