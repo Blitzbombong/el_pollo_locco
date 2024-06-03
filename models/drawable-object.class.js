@@ -7,22 +7,21 @@ class DrawableObject {
   height = 100;
   width = 100;
   energetic = 0;
+  lastHeal = 0;
   collected = false;
 
   heal() {
-    // Erhöht die Energie des Objekts um 5.
-    this.energetic += 20;
-
-    // Überprüft, ob die Energie größer als 100 ist.
-    if (this.energetic > 100) {
-      // Setzt die Energie auf 100, wenn sie über 100 steigt.
-      this.energetic = 100;
-    } else {
-      // Wenn die Energie 100 nicht überschreitet,
-      // wird die Zeit des letzten Heilens gespeichert.
-      this.lastHeal = new Date().getTime();
+    if (this.energetic < 100) {
+        this.energetic += 20;
+        if (this.energetic > 100) {
+            this.energetic = 100;
+        } else {
+            this.lastHeal = new Date().getTime(); // Aktualisiere den Zeitstempel des letzten Heilens
+        }
     }
-  }
+}
+
+  
 
 
   // loadImage('img/test.png')

@@ -9,6 +9,7 @@ class World {
   salsaBottle = level1.salsaBottle;
   endboss = level1.endboss;
   backgroundObject = level1.backgroundObject;
+  collectableObjects = [this.coins, this.salsaBottle];
 
   level = level1;
   canvas;
@@ -22,15 +23,21 @@ class World {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
-    this.checkCollisions();
+    this.checkCollision();
   }
 
   setWorld() {
     this.character.world = this;
   }
 
+  checkCollision() {
+    this.checkCollisionEnemies();
+    this.checkCollisionsCoins();
+    this.checkCollisionsSalsaBottles();
+  }
+
   // Pruft Kolisionen Character || Chiken
-  checkCollisions() {
+  checkCollisionEnemies() {
     setInterval(() => {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
@@ -41,40 +48,38 @@ class World {
     }, 100);
   }
 
-    /*
-  // Pruft Kolisionen Character || Chiken
-  checkCollisiones() {
+  /* console.log('Collision with Character, energy', this.character.energy); */
+  checkCollisionsCoins() {
     setInterval(() => {
       this.level.coins.forEach((coin) => {
         if (!coin.collected && this.character.isColliding(coin)) {
           coin.collect(); // Markiere den Coin als gesammelt und verstecke ihn
-          this.statusBarCoin.collectCoin(); // Aktualisiere die Statusleiste
-          console.log(
-            "Collision with Character, coins collected:",
-            this.statusBarCoin.coinsCollected
-          );
-        }
-      });
-    }, 100);
-  }*/
-
-  
-    checkCollisions() {
-    setInterval(() => {
-      this.level.coins.forEach((coin) => {
-        if (!coin.collected && this.character.isColliding(coin)) {
-          coin.collect(); // Markiere den Coin als gesammelt und verstecke ihn
-          this.character.heal(); // Erhöhe die Energie des Charakters
+          this.character.heal(); // Erhöhe den StatusBarCoin
           this.statusBarCoin.collectPercetage(this.character.energetic);
-          console.log('Collision with Character, energetic:', this.character.energetic);
         }
       });
-
-      // Hier kannst du andere Spielaktualisierungen hinzufügen
     }, 100);
   }
 
 
+
+
+  checkCollisionsSalsaBottles() {
+    setInterval(() => {
+      this.level.salsaBottle.forEach((bottle) => {
+        if (!bottle.collected && this.character.isColliding(bottle)) {
+          if (this.character.energetic < 100) { // Überprüfen, ob die Statusleiste voll ist
+            bottle.collect(); // Markiere die Flasche als gesammelt und verstecke sie
+            this.character.heal(); // Erhöhe den StatusBarSalsaBottle
+            this.statusBarBottle.collectPercetage(this.character.energetic);
+            console.log('Collision with Character, energetic', this.character.energetic);
+        } else {
+            console.log('StatusBar is full, cannot collect more bottles');
+        }
+         }
+      });
+    }, 100);
+  }
 
   /*console.log('Collision with Character, energetic', this.character.energetic);*/
 

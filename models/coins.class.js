@@ -1,4 +1,4 @@
-class Coins extends MovableObject {
+class Coins extends DrawableObject {
   offset = {
     top: 10,
     left: 10,
@@ -12,23 +12,21 @@ class Coins extends MovableObject {
   constructor() {
     super().loadImage("img/8_coin/coin_1.png");
     this.loadImages(this.IMAGE_COIN);
-    this.collected = false;
     this.x = 200 + Math.random() * 2001;
     this.y = 100 + Math.random() * 200;
-    this.collectSound = new Audio('audio/coin_sound.mp3');
-    this.currentImage = 0;
+    this.collectSound = new Audio("audio/coin_sound.mp3");
     this.animate();
   }
 
   animate() {
     setInterval(() => {
       if (!this.collected) {
-      let i = this.currentImage % this.IMAGE_COIN.length; // let i = 7 % 6; => 1. Rest 1
-      // i = 0, 1, 2, 3, 4, 5, , 0, 1 .... wiederholt die Zahlen von 0 bis 5
-      let path = this.IMAGE_COIN[i];
-      this.img = this.imageCache[path];
-      this.currentImage++;
-    }
+        let i = this.currentImage % this.IMAGE_COIN.length; // let i = 7 % 6; => 1. Rest 1
+        // i = 0, 1, 2, 3, 4, 5, , 0, 1 .... wiederholt die Zahlen von 0 bis 5
+        let path = this.IMAGE_COIN[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+      }
     }, 300);
   }
 
@@ -39,7 +37,7 @@ class Coins extends MovableObject {
   }
 
   hide() {
-    this.x = - 100;
-    this.y = - 100;
+    this.x = -100;
+    this.y = -100;
   }
 }

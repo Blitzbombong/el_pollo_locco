@@ -24,6 +24,7 @@ class StatusBarCoin extends DrawableObject {
     this.img = this.imageCache[path];
   }
 
+  // Erhot StatusBar fur Coins und Bottles
   resolveImageIndex() {
     if (this.percentajes == 0) {
       return 0;
