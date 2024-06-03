@@ -53,30 +53,37 @@ class World {
     setInterval(() => {
       this.level.coins.forEach((coin) => {
         if (!coin.collected && this.character.isColliding(coin)) {
-          coin.collect(); // Markiere den Coin als gesammelt und verstecke ihn
-          this.character.heal(); // Erhöhe den StatusBarCoin
-          this.statusBarCoin.collectPercetage(this.character.energetic);
-        }
+          if (this.character.coinStatus < 100) {
+            // Überprüfen, ob die Statusleiste voll ist
+            coin.collect(); // Markiere die Flasche als gesammelt und verstecke sie
+            this.character.healCoins(); // Erhöhe den StatusBarSalsaBottle
+            this.statusBarCoin.collectPercetage(this.character.coinStatus);
+            console.log(
+              "Collision with Character, energetic",
+              this.character.coinStatus
+            );
+          } else {
+            console.log("StatusBar is full, cannot collect more coins");
+          }
+         }
       });
     }, 100);
   }
-
-
-
 
   checkCollisionsSalsaBottles() {
     setInterval(() => {
       this.level.salsaBottle.forEach((bottle) => {
         if (!bottle.collected && this.character.isColliding(bottle)) {
-          if (this.character.energetic < 100) { // Überprüfen, ob die Statusleiste voll ist
+          if (this.character.bottleStatus < 100) {
+            // Überprüfen, ob die Statusleiste voll ist
             bottle.collect(); // Markiere die Flasche als gesammelt und verstecke sie
-            this.character.heal(); // Erhöhe den StatusBarSalsaBottle
-            this.statusBarBottle.collectPercetage(this.character.energetic);
-            console.log('Collision with Character, energetic', this.character.energetic);
-        } else {
-            console.log('StatusBar is full, cannot collect more bottles');
+            this.character.healBottle(); // Erhöhe den StatusBarSalsaBottle
+            this.statusBarBottle.collectPercetage(this.character.bottleStatus);
+            /*console.log('Collision with Character, energetic', this.character.bottleStatus);*/
+          } else {
+            /*console.log('StatusBar is full, cannot collect more bottles');*/
+          }
         }
-         }
       });
     }, 100);
   }

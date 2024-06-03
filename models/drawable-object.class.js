@@ -6,21 +6,33 @@ class DrawableObject {
   y = 300;
   height = 100;
   width = 100;
-  energetic = 0;
+  coinStatus = 0;
+  bottleStatus = 0;
   lastHeal = 0;
   collected = false;
 
-  heal() {
-    if (this.energetic < 100) {
-        this.energetic += 20;
-        if (this.energetic > 100) {
-            this.energetic = 100;
+  healCoins() {
+    if (this.coinStatus < 100) {
+        this.coinStatus += 20;
+        if (this.coinStatus > 100) {
+            this.coinStatus = 100;
         } else {
             this.lastHeal = new Date().getTime(); // Aktualisiere den Zeitstempel des letzten Heilens
         }
     }
 }
 
+
+healBottle() {
+  if (this.bottleStatus < 100) {
+      this.bottleStatus += 20;
+      if (this.bottleStatus > 100) {
+          this.bottleStatus = 100;
+      } else {
+          this.lastHeal = new Date().getTime(); // Aktualisiere den Zeitstempel des letzten Heilens
+      }
+  }
+}
   
 
 
