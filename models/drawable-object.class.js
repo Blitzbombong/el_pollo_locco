@@ -22,7 +22,29 @@ class DrawableObject {
     }
 }
 
+/*
+healBottle() {
+  if (this.statusBarBottle.percentajes< 100) {
+    this.statusBarBottle.bottleStatus += 20;
+    if (this.statusBarBottle.bottleStatus > 100) {
+      this.statusBarBottle.bottleStatus = 100;
+    }
+    this.statusBarBottle.collectPercentage(this.statusBarBottle.bottleStatus);
+  }
+}
 
+throwBottle() {
+  if (this.statusBarBottle.bottleStatus >= 20) {
+    this.statusBarBottle.bottleStatus -= 20;
+    this.statusBarBottle.collectPercentage(this.statusBarBottle.bottleStatus);
+    console.log('Bottle thrown');
+    // Weitere Logik für das Werfen der Flasche
+  } else {
+    console.log("Not enough bottles to throw");
+  }
+}
+  */
+/*
 healBottle() {
   if (this.bottleStatus < 100) {
       this.bottleStatus += 20;
@@ -33,8 +55,18 @@ healBottle() {
       }
   }
 }
-  
 
+throwBottle() {
+  if (this.bottleStatus >= 20) {
+    this.bottleStatus -= 20;
+    console.log('Bottle thrown');
+    this.statusBarBottle.collectPercentage(this.bottleStatus); // Aktualisieren Sie die Statusleiste
+  } else {
+    console.log("Not enough bottles to throw");
+    this.lastHeal = new Date().getTime(); // Aktualisieren Sie den Zeitstempel des letzten Heilens
+  }
+}
+*/
 
   // loadImage('img/test.png')
   loadImage(path) {

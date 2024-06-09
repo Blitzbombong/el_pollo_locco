@@ -1,4 +1,4 @@
-class World {
+class World extends MovableObject {
   character = new Character();
   statusBarHealt = new StatusBarHealt();
   statusBarCoin = new StatusBarCoin();
@@ -9,7 +9,6 @@ class World {
   salsaBottle = level1.salsaBottle;
   endboss = level1.endboss;
   backgroundObject = level1.backgroundObject;
-  collectableObjects = [this.coins, this.salsaBottle];
 
   level = level1;
   canvas;
@@ -18,6 +17,7 @@ class World {
   camera_x = 0;
 
   constructor(canvas, keyboard) {
+    super();
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
@@ -58,12 +58,12 @@ class World {
             coin.collect(); // Markiere die Flasche als gesammelt und verstecke sie
             this.character.healCoins(); // Erhöhe den StatusBarSalsaBottle
             this.statusBarCoin.collectPercetage(this.character.coinStatus);
-            console.log(
+            /*console.log(
               "Collision with Character, energetic",
               this.character.coinStatus
-            );
+            );*/
           } else {
-            console.log("StatusBar is full, cannot collect more coins");
+            /*console.log("StatusBar is full, cannot collect more coins");*/
           }
          }
       });
@@ -78,7 +78,7 @@ class World {
             // Überprüfen, ob die Statusleiste voll ist
             bottle.collect(); // Markiere die Flasche als gesammelt und verstecke sie
             this.character.healBottle(); // Erhöhe den StatusBarSalsaBottle
-            this.statusBarBottle.collectPercetage(this.character.bottleStatus);
+            this.statusBarBottle.collectPercentage(this.character.bottleStatus);
             /*console.log('Collision with Character, energetic', this.character.bottleStatus);*/
           } else {
             /*console.log('StatusBar is full, cannot collect more bottles');*/
