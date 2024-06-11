@@ -17,11 +17,11 @@ class StatusBarBottle extends DrawableObject {
     this.width = 200;
     this.height = 50;
     this.bottleStatus = 0;
-    this.collectPercentage(this.bottleStatus);
+    this.collectPercentage(0);
   }
 
   collectPercentage(bottleStatus) {
-    this.bottleStatus = bottleStatus; // Speichern Sie den aktuellen Prozentsatz
+    this.bottleStatus = bottleStatus;
     let path = this.IMAGES_BOTTLE[this.resolveImageIndex()];
     this.img = this.imageCache[path];
   }
@@ -41,5 +41,4 @@ class StatusBarBottle extends DrawableObject {
       return 5;
     }
   }
-
 }

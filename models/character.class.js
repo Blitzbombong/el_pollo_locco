@@ -54,6 +54,7 @@ class Character extends MovableObject {
 
     bottleStatus = 0; // Initialisieren Sie den bottleStatus
     lastHeal = 0; // Initialisieren Sie lastHeal
+    canThrowBottle = true; // Neue Variable hinzufügen
 
   constructor() {
     super().loadImage("img/2_character_pepe/2_walk/W-21.png");
@@ -89,8 +90,12 @@ class Character extends MovableObject {
         this.jumping_sound.volume = 0.3;
       }
 
-      if (this.world.keyboard.THROW) {
+      if (this.world.keyboard.THROW && this.canThrowBottle) { // Überprüfe canThrowBottle
         this.throwBottle();
+      }
+
+      if (!this.world.keyboard.THROW) {
+        this.canThrowBottle = true; // Setze die Variable zurück, wenn die Taste losgelassen wird
       }
 
       this.world.camera_x = -this.x + 100;
@@ -121,18 +126,19 @@ class Character extends MovableObject {
       if (this.bottleStatus > 100) {
         this.bottleStatus = 100;
       }
-      
+      this.world.statusBarBottle.collectPercentage(this.bottleStatus);
     }
   }
 
   throwBottle() {
-    if (this.bottleStatus >= 20) {
+    if (this.bottleStatus >= 20 && this.canThrowBottle) { // Überprüfe, ob geworfen werden kann
       this.bottleStatus -= 20;
-      console.log('Bottle thrown');
-      this.world.statusBarBottle.collectPercentage(this.bottleStatus); // Aktualisieren Sie die Statusleiste
+      console.log(`Bottle thrown. Current bottleStatus: ${this.bottleStatus}`);
+      this.world.statusBarBottle.collectPercentage(this.bottleStatus);
+      this.canThrowBottle = false; // Setze die Variable auf false
     } else {
       console.log("Not enough bottles to throw");
-      this.lastHeal = new Date().getTime(); // Aktualisieren Sie den Zeitstempel des letzten Heilens
+      this.lastHeal = new Date().getTime(); // Aktualisieren des Zeitstempels des letzten Heilens
     }
   }
 }
