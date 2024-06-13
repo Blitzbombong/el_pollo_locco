@@ -88,6 +88,10 @@ class World extends MovableObject {
     }, 100);
   }
 
+  addFlyingBottle(bottle) {
+    this.level.salsaBottle.push(bottle);
+  }
+
   /*console.log('Collision with Character, energetic', this.character.energetic);*/
 
   draw() {
