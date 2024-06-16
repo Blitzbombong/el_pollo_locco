@@ -4,7 +4,7 @@ class MovableObject extends DrawableObject {
     speedY = 0;
     acceletation = 2.5;
     energy = 100;
-    lastHit = 0;
+    hidden = true;
     offset = {
         top: 0,
         left: 0,
@@ -80,5 +80,9 @@ class MovableObject extends DrawableObject {
 
     jump(){
         this.speedY = 30;
-    }    
+    }   
+    
+    hide() {
+        this.hidden = false;
+      }
 }

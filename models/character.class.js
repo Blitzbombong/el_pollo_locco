@@ -52,10 +52,6 @@ class Character extends MovableObject {
     bottom: 30,
   };
 
-    bottleStatus = 0; // Initialisieren Sie den bottleStatus
-    lastHeal = 0; // Initialisieren Sie lastHeal
-    canThrowBottle = true; // Neue Variable hinzufügen
-
   constructor() {
     super().loadImage("img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.IMAGES_WALKING);
@@ -90,14 +86,6 @@ class Character extends MovableObject {
         this.jumping_sound.volume = 0.3;
       }
 
-      if (this.world.keyboard.THROW && this.canThrowBottle) { // Überprüfe canThrowBottle
-        this.throwBottle();
-      }
-
-      if (!this.world.keyboard.THROW) {
-        this.canThrowBottle = true; // Setze die Variable zurück, wenn die Taste losgelassen wird
-      }
-
       this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
 
@@ -118,40 +106,5 @@ class Character extends MovableObject {
         this.loadImage("img/2_character_pepe/1_idle/idle/I-1.png");
       }
     }, 50);
-  }
-
-  healBottle() {
-    if (this.bottleStatus < 100) {
-      this.bottleStatus += 20;
-      if (this.bottleStatus > 100) {
-        this.bottleStatus = 100;
-      }
-      this.world.statusBarBottle.collectPercentage(this.bottleStatus);
-    }
-  }
-
-  throwBottle() {
-    if (this.bottleStatus >= 20 && this.canThrowBottle) {
-      this.bottleStatus -= 20;
-      console.log(`Bottle thrown. Current bottleStatus: ${this.bottleStatus}`);
-      this.world.statusBarBottle.collectPercentage(this.bottleStatus); // Aktualisieren der Statusleiste
-  
-      // Neue fliegende Flasche erstellen
-      let bottle = new SalsaBottle();
-      bottle.x = this.x;
-      bottle.y = this.y;
-      bottle.otherDirection = this.otherDirection; // Richtung der Flasche setzen
-      bottle.throwBottle();
-  
-      this.world.addFlyingBottle(bottle); // Füge die fliegende Flasche der Welt hinzu
-  
-      this.canThrowBottle = false; // Setze die Variable auf false
-      setTimeout(() => {
-        this.canThrowBottle = true; // Setze die Variable nach 500ms auf true
-      }, 500);
-    } else {
-      console.log("Not enough bottles to throw");
-      this.lastHeal = new Date().getTime(); // Aktualisieren des Zeitstempels des letzten Heilens
-    }
   }
 }

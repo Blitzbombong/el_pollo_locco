@@ -31,26 +31,25 @@ class World extends MovableObject {
   }
 
   checkCollision() {
+   setInterval(() => {
     this.checkCollisionEnemies();
     this.checkCollisionsCoins();
     this.checkCollisionsSalsaBottles();
+   }, 100);
   }
 
   // Pruft Kolisionen Character || Chiken
   checkCollisionEnemies() {
-    setInterval(() => {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
           this.character.hit();
           this.statusBarHealt.setPercetage(this.character.energy);
         }
       });
-    }, 100);
   }
 
   /* console.log('Collision with Character, energy', this.character.energy); */
   checkCollisionsCoins() {
-    setInterval(() => {
       this.level.coins.forEach((coin) => {
         if (!coin.collected && this.character.isColliding(coin)) {
           if (this.character.coinStatus < 100) {
@@ -67,11 +66,9 @@ class World extends MovableObject {
           }
          }
       });
-    }, 100);
   }
 
   checkCollisionsSalsaBottles() {
-    setInterval(() => {
       this.level.salsaBottle.forEach((bottle) => {
         if (!bottle.collected && this.character.isColliding(bottle)) {
           if (this.character.bottleStatus < 100) {
@@ -85,14 +82,7 @@ class World extends MovableObject {
           }
         }
       });
-    }, 100);
   }
-
-  addFlyingBottle(bottle) {
-    this.level.salsaBottle.push(bottle);
-  }
-
-  /*console.log('Collision with Character, energetic', this.character.energetic);*/
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Clear the Canvas.

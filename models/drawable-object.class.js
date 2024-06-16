@@ -7,9 +7,8 @@ class DrawableObject {
   height = 100;
   width = 100;
   coinStatus = 0;
-  bottleStatus = 0;
   lastHeal = 0;
-  collected = false;
+ 
 
   healCoins() {
     if (this.coinStatus < 100) {
