@@ -21,23 +21,9 @@ class Coins extends DrawableObject {
   animate() {
     setInterval(() => {
       if (!this.collected) {
-        let i = this.currentImage % this.IMAGE_COIN.length; // let i = 7 % 6; => 1. Rest 1
-        // i = 0, 1, 2, 3, 4, 5, , 0, 1 .... wiederholt die Zahlen von 0 bis 5
-        let path = this.IMAGE_COIN[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
+        this.playAnimation(this.IMAGE_COIN);
       }
     }, 300);
   }
 
-  collect() {
-    this.collected = true; // Mark the coin as collected
-    this.collectSound.play(); // Play the collection sound
-    this.hide(); // Hide the coin
-  }
-
-  hide() {
-    this.x = -100;
-    this.y = -100;
-  }
 }

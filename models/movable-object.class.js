@@ -22,11 +22,14 @@ class MovableObject extends DrawableObject {
             }
         }, 1000 / 25);
     }
-
-
+    
     // Pruft ob das Object auf dem Boden ist
     isAboveGround() {
-        return this.y < 200;
+        if (this instanceof TrowableObject) {
+            return true;
+        } else { 
+            return this.y < 200;
+        }
     }
 
 

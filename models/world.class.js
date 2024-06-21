@@ -1,14 +1,15 @@
-class World extends MovableObject {
+class World {
   character = new Character();
   statusBarHealt = new StatusBarHealt();
   statusBarCoin = new StatusBarCoin();
   statusBarBottle = new StatusBarBottle();
   enemies = level1.enemies;
   clouds = level1.clouds;
+  salsaBottles = level1.salsaBottles;
   coins = level1.coins;
-  salsaBottle = level1.salsaBottle;
   endboss = level1.endboss;
   backgroundObject = level1.backgroundObject;
+  trowableObject = [];
 
   level = level1;
   canvas;
@@ -17,25 +18,33 @@ class World extends MovableObject {
   camera_x = 0;
 
   constructor(canvas, keyboard) {
-    super();
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
-    this.checkCollision();
+    this.checkCollisions();
   }
 
   setWorld() {
     this.character.world = this;
   }
 
-  checkCollision() {
+  checkCollisions() {
    setInterval(() => {
     this.checkCollisionEnemies();
+    this.checkTrowableObjects()
     this.checkCollisionsCoins();
     this.checkCollisionsSalsaBottles();
    }, 100);
+  }
+
+  checkTrowableObjects() {
+    if (this.keyboard.THROW) {
+      console.log("throwing");
+      let bottle = new TrowableObject(this.character.x + 80, this.character.y + 80);
+      this.trowableObject.push(bottle);
+    }
   }
 
   // Pruft Kolisionen Character || Chiken
@@ -52,11 +61,11 @@ class World extends MovableObject {
   checkCollisionsCoins() {
       this.level.coins.forEach((coin) => {
         if (!coin.collected && this.character.isColliding(coin)) {
-          if (this.character.coinStatus < 100) {
+          if (this.character.status < 100) {
             // Überprüfen, ob die Statusleiste voll ist
             coin.collect(); // Markiere die Flasche als gesammelt und verstecke sie
-            this.character.healCoins(); // Erhöhe den StatusBarSalsaBottle
-            this.statusBarCoin.collectPercetage(this.character.coinStatus);
+            this.character.healObject(); // Erhöhe den StatusBarSalsaBottle
+            this.statusBarCoin.collectPercetage(this.character.status);
             /*console.log(
               "Collision with Character, energetic",
               this.character.coinStatus
@@ -71,11 +80,11 @@ class World extends MovableObject {
   checkCollisionsSalsaBottles() {
       this.level.salsaBottle.forEach((bottle) => {
         if (!bottle.collected && this.character.isColliding(bottle)) {
-          if (this.character.bottleStatus < 100) {
+          if (this.character.status < 100) {
             // Überprüfen, ob die Statusleiste voll ist
             bottle.collect(); // Markiere die Flasche als gesammelt und verstecke sie
-            this.character.healBottle(); // Erhöhe den StatusBarSalsaBottle
-            this.statusBarBottle.collectPercentage(this.character.bottleStatus);
+            this.character.healObject(); // Erhöhe den StatusBarSalsaBottle
+            this.statusBarBottle.collectPercentage(this.character.status);
             /*console.log('Collision with Character, energetic', this.character.bottleStatus);*/
           } else {
             /*console.log('StatusBar is full, cannot collect more bottles');*/
@@ -100,6 +109,7 @@ class World extends MovableObject {
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.salsaBottle);
+    this.addObjectsToMap(this.trowableObject);
     this.addObjectsToMap(this.level.endboss);
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
