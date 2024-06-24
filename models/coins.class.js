@@ -1,9 +1,9 @@
 class Coins extends DrawableObject {
   offset = {
-    top: 10,
-    left: 10,
-    right: 10,
-    bottom: 10,
+    top: 30,
+    left: 30,
+    right: 30,
+    bottom: 30,
   };
   y = 300;
   x = 2500;
@@ -25,5 +25,7 @@ class Coins extends DrawableObject {
       }
     }, 300);
   }
+
+ 
 
 }

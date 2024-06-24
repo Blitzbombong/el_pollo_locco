@@ -6,7 +6,8 @@ class DrawableObject {
   y = 300;
   height = 100;
   width = 100;
-  status = 0;
+  coinStatus = 0;
+  bottleStatus = 0;
   lastHeal = 0;
   collected = false;
   hidden = true;
@@ -27,11 +28,22 @@ class DrawableObject {
     this.hide(); // Hide the coin
   }
 
-  healObject() {
-    if (this.status < 100) {
-      this.status += 20;
-      if (this.status > 100) {
-        this.status = 100;
+  healCoins() {
+    if (this.coinStatus < 100) {
+      this.coinStatus += 20;
+      if (this.coinStatus > 100) {
+        this.coinStatus = 100;
+      } else {
+        this.lastHeal = new Date().getTime(); // Aktualisiere den Zeitstempel des letzten Heilens
+      }
+    }
+  }
+
+  healBottle() {
+    if (this.bottleStatus < 100) {
+      this.bottleStatus += 20;
+      if (this.bottleStatus > 100) {
+        this.bottleStatus = 100;
       } else {
         this.lastHeal = new Date().getTime(); // Aktualisiere den Zeitstempel des letzten Heilens
       }
@@ -57,9 +69,9 @@ class DrawableObject {
   }
 
   draw(ctx) {
-    if (this.hidden) {
-      ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
+      if (this.hidden) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+      } 
   }
 
   /**
@@ -85,7 +97,7 @@ class DrawableObject {
       ctx.beginPath();
       ctx.lineWidth = "4";
       ctx.strokeStyle = "red";
-      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.top - this.offset.bottom);
       ctx.stroke();
     }
 
@@ -94,7 +106,7 @@ class DrawableObject {
       ctx.beginPath();
       ctx.lineWidth = "4";
       ctx.strokeStyle = "blue";
-      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.top - this.offset.bottom);
       ctx.stroke();
     }
   }
