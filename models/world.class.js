@@ -3,11 +3,11 @@ class World {
   statusBarHealt = new StatusBarHealt();
   statusBarCoin = new StatusBarCoin();
   statusBarBottle = new StatusBarBottle();
+  endboss = new Endboss();
   enemies = level1.enemies;
   clouds = level1.clouds;
   salsaBottles = level1.salsaBottles;
   coins = level1.coins;
-  endboss = level1.endboss;
   backgroundObject = level1.backgroundObject;
   trowableObject = [];
 
@@ -97,21 +97,22 @@ class World {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Clear the Canvas.
 
     this.ctx.translate(this.camera_x, 0);
-
     this.addObjectsToMap(this.level.backgroundObject);
+    this.addObjectsToMap(this.level.clouds);
 
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBarHealt);
     this.addToMap(this.statusBarCoin);
     this.addToMap(this.statusBarBottle);
+
     this.ctx.translate(this.camera_x, 0);
 
-    this.addObjectsToMap(this.level.clouds);
+    this.addToMap(this.character);
+    
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.salsaBottle);
     this.addObjectsToMap(this.trowableObject);
     this.addObjectsToMap(this.level.endboss);
-    this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
 
     this.ctx.translate(-this.camera_x, 0);
