@@ -1,4 +1,4 @@
- class TrowableObject extends MovableObject {
+class TrowableObject extends MovableObject {
     speedY = 30;
     speedX = 30;
     width = 50;
