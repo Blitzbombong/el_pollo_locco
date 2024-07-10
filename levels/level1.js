@@ -1,5 +1,6 @@
 const level1 = new Level(
     [/*  
+        new Endboss(),
         new Chicken(),
         new Chicken(),
         new Chicken(),
@@ -26,16 +27,16 @@ const level1 = new Level(
         new Coins()
     ],
     [
-        new SalsaBottle(),
-        new SalsaBottle(),
-        new SalsaBottle(),
-        new SalsaBottle(),
-        new SalsaBottle(),
-        new SalsaBottle(),
-        new SalsaBottle(),
-        new SalsaBottle(),
-        new SalsaBottle(),
-        new SalsaBottle()
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
     ],
     [
         new Endboss()

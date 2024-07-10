@@ -1,8 +1,4 @@
 class TrowableObject extends MovableObject {
-    speedY = 30;
-    speedX = 30;
-    width = 50;
-    height = 70;
     offset = {
         top: 10,
         left: 10,
@@ -15,45 +11,43 @@ class TrowableObject extends MovableObject {
         'img/6_salsa_bottle/bottle_rotation/3_bottle_rotation.png',
         'img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png'
       ];
-    
-      IMAGE_BOTTLESPLASH = [
-        'img/6_salsa_bottle/bottle_rotation/bottle_splash/1_bottle_splash.png',
-        'img/6_salsa_bottle/bottle_rotation/bottle_splash/2_bottle_splash.png',
-        'img/6_salsa_bottle/bottle_rotation/bottle_splash/3_bottle_splash.png',
-        'img/6_salsa_bottle/bottle_rotation/bottle_splash/4_bottle_splash.png',
-        'img/6_salsa_bottle/bottle_rotation/bottle_splash/5_bottle_splash.png',
-        'img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png'
-      ];
 
 
     constructor(x, y) {
         super().loadImage("img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png");
-        this.loadImages(this.IMAGE_THROWBOTTLE);
-        this.loadImages(this.IMAGE_BOTTLESPLASH);
         this.x = x;
         this.y = y;
-        this.collectSound = new Audio('audio/cllect-bottle.mp3 ');
-        this.applyGravity();
+        this.width = 70;
+        this.height = 70;
+        this.loadImages(this.IMAGE_THROWBOTTLE);
+        this.IMAGE_THROWBOTTLE();
         this.animate();
       }
 
       
     
       animate() {
-          this.throw()
-          setInterval(() => {
-            this.playAnimation(this.IMAGE_THROWBOTTLE);
-          }, 50);
-        }
-      
-        
+        setInterval(() => this.throwBottle(), 100);
+    }
+       
     
-      throw() {
-        this.speedY = 30;
-        this.applyGravity();
-        setInterval(() => {
-          this.x += 10;
-        }, 15);
+        trow(x, y) {
+          this.speedY = 30;
+          this.applyGravity();
+          if (world.charakter.otherDirection) {
+              this.speedX = -10; 
+          } else {
+              this.speedX = 10;  
+          }
+  
+          setInterval(() => {
+              this.x += this.speedX;
+          }, 25);
       }
+
+      throwBottle() {
+        let i = this.currentImage % this.IMAGES_BOTTLE_ROTATION.length;
+        this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
+    }
 
 }

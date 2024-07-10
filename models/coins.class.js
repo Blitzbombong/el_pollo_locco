@@ -5,27 +5,32 @@ class Coins extends DrawableObject {
     right: 30,
     bottom: 30,
   };
-  y = 300;
-  x = 2500;
-  IMAGE_COIN = ["img/8_coin/coin_1.png", "img/8_coin/coin_2.png"];
+  
+  IMAGE_COIN = [
+    "img/8_coin/coin_1.png", 
+    "img/8_coin/coin_2.png"
+  ];
 
-  constructor() {
+  constructor(x, y, height, width) {
     super().loadImage("img/8_coin/coin_1.png");
     this.loadImages(this.IMAGE_COIN);
-    this.x = 200 + Math.random() * 2001;
-    this.y = 100 + Math.random() * 200;
+    this.x = x;
+    this.y = y;
+    this.height = height;
+    this.width = width;
     this.collectSound = new Audio("audio/coin_sound.mp3");
     this.animate();
   }
 
   animate() {
-    setInterval(() => {
-      if (!this.collected) {
-        this.playAnimation(this.IMAGE_COIN);
-      }
-    }, 300);
-  }
+    setInterval(() => this.collectCoin(), 650);
+}
 
+
+collectCoin() {
+  let i = this.currentImage % this.IMAGES_COIN.length;
+  this.playAnimation(this.IMAGE_COIN);
+}
  
 
 }

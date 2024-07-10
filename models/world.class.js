@@ -10,6 +10,11 @@ class World {
   coins = level1.coins;
   backgroundObject = level1.backgroundObject;
   trowableObject = [];
+  coinStatus = 0;
+  bottleStatus = 0;
+  lastHeal = 0;
+  collected = false;
+  hidden = true;
 
   level = level1;
   canvas;
@@ -58,40 +63,7 @@ class World {
   }
 
   /* console.log('Collision with Character, energy', this.character.energy); */
-  checkCollisionsCoins() {
-      this.level.coins.forEach((coin) => {
-        if (!coin.collected && this.character.isColliding(coin)) {
-          if (this.character.coinStatus < 100) {
-            // Überprüfen, ob die Statusleiste voll ist
-            coin.collect(); // Markiere die Flasche als gesammelt und verstecke sie
-            this.character.healCoins(); // Erhöhe den StatusBarSalsaBottle
-            this.statusBarCoin.collectPercetage(this.character.coinStatus);
-            /*console.log(
-              "Collision with Character, energetic",
-              this.character.coinStatus
-            );*/
-          } else {
-            /*console.log("StatusBar is full, cannot collect more coins");*/
-          }
-         }
-      });
-  }
-
-  checkCollisionsSalsaBottles() {
-      this.level.salsaBottle.forEach((bottle) => {
-        if (!bottle.collected && this.character.isColliding(bottle)) {
-          if (this.character.bottleStatus < 100) {
-            // Überprüfen, ob die Statusleiste voll ist
-            bottle.collect(); // Markiere die Flasche als gesammelt und verstecke sie
-            this.character.healBottle(); // Erhöhe den StatusBarSalsaBottle
-            this.statusBarBottle.collectPercentage(this.character.bottleStatus);
-            /*console.log('Collision with Character, energetic', this.character.bottleStatus);*/
-          } else {
-            /*console.log('StatusBar is full, cannot collect more bottles');*/
-          }
-        }
-      });
-  }
+  
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Clear the Canvas.

@@ -9,35 +9,35 @@ class StatusBarCoin extends DrawableObject {
   ];
 
   constructor() {
-    super().loadImage(this.IMAGES_COIN[0]);
+    super();
     this.loadImages(this.IMAGES_COIN);
     this.x = 10;
     this.y = 40;
     this.width = 200;
     this.height = 50;
-    this.collectPercetage(0);
+    this.setPercentage(0);
   }
 
-  collectPercetage(percentajes) {
-    this.percentajes = percentajes; // => 0 .... 5
+  setPercentage(percentage) {
+    this.percentage = percentage;
     let path = this.IMAGES_COIN[this.resolveImageIndex()];
     this.img = this.imageCache[path];
-  }
+}
 
   // Erhot StatusBar fur Coins und Bottles
   resolveImageIndex() {
-    if (this.percentajes == 0) {
-      return 0;
-    } else if (this.percentajes <= 20) {
-      return 1;
-    } else if (this.percentajes <= 40) {
-      return 2;
-    } else if (this.percentajes <= 60) {
-      return 3;
-    } else if (this.percentajes <= 80) {
-      return 4;
-    } else if (this.percentajes <= 100) {
-      return 5;
+    if (this.percentage == 0) {
+        return 0;
+    } else if (this.percentage < 3) {
+        return 1;
+    } else if (this.percentage < 6) {
+        return 2;
+    } else if (this.percentage < 9) {
+        return 3;
+    } else if (this.percentage < 10) {
+        return 4;
+    } else {
+        return 5;
     }
-  }
+}
 }
