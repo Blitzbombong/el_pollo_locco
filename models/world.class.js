@@ -6,15 +6,9 @@ class World {
   endboss = new Endboss();
   enemies = level1.enemies;
   clouds = level1.clouds;
-  salsaBottles = level1.salsaBottles;
-  coins = level1.coins;
-  backgroundObject = level1.backgroundObject;
   trowableObject = [];
-  coinStatus = 0;
-  bottleStatus = 0;
-  lastHeal = 0;
-  collected = false;
-  hidden = true;
+  coins = 0;
+  salsaBottles = 0;
 
   level = level1;
   canvas;
@@ -35,35 +29,84 @@ class World {
     this.character.world = this;
   }
 
+  run() {
+    setInterval(() => {
+      this.checkCollisions();
+      this.checkTrowableObjects();
+    }, 200);
+  }
+
   checkCollisions() {
-   setInterval(() => {
     this.checkCollisionEnemies();
-    this.checkTrowableObjects()
-    this.checkCollisionsCoins();
-    this.checkCollisionsSalsaBottles();
-   }, 100);
+    this.checkCollisionCoins();
+    this.checkCollisionBottles();
+    //this.checkCollisionEndboss();
+    //this.checkCollisionWithEndboss();
   }
 
   checkTrowableObjects() {
-    if (this.keyboard.THROW) {
-      console.log("throwing");
-      let bottle = new TrowableObject(this.character.x + 80, this.character.y + 80);
-      this.trowableObject.push(bottle);
-    }
+    if (this.nowThrowBottle()) {
+      this.throwBottle();
+    } else return;
   }
+
+  nowThrowBottle() {
+    return this.keyboard.THROW && !this.salsaBottles == 0;
+  }
+
+  throwBottle() {
+    let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+    this.trowableObject.push(bottle);
+    this.salsaBottles--;
+    this.statusBarBottle.setPercentage(this.salsaBottles);
+}
 
   // Pruft Kolisionen Character || Chiken
   checkCollisionEnemies() {
-      this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)) {
-          this.character.hit();
-          this.statusBarHealt.setPercetage(this.character.energy);
-        }
-      });
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        this.character.hit();
+        this.statusBarHealt.setPercetage(this.character.energy);
+      }
+    });
   }
 
+  checkCollisionCoins() {
+    this.level.coins.forEach((coins) => {
+        if (this.character.isColliding(coins)) {
+            this.collectCoin();
+            this.statusBarCoin.setPercentage(this.coins);
+            coins.x = -3000;
+            coins.collectSound.play()
+            coins.collectSound.volume = 0.5;
+        }
+        if (this.coins == 10 &&  this.endboss.energy == 0) {
+            loadWinScreen();
+        }
+    });
+}
+
+collectCoin() {
+  this.coins += 1;
+}
+
+checkCollisionBottles() {
+  this.level.salsaBottle.forEach((bottle) => {
+      if (this.character.isColliding(currentBottle)) {
+          this.collectBottle();
+          this.statusBarBottle.setPercentage(this.salsaBottles);
+          bottle.x = -3000;
+          bottle.collectSound.play()
+          bottle.collectSound.volume = 0.5;
+      }
+  });
+}
+
+collectBottle() {
+  this.salsaBottles += 1;
+}
+
   /* console.log('Collision with Character, energy', this.character.energy); */
-  
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Clear the Canvas.
@@ -80,7 +123,7 @@ class World {
     this.ctx.translate(this.camera_x, 0);
 
     this.addToMap(this.character);
-    
+
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.salsaBottle);
     this.addObjectsToMap(this.trowableObject);

@@ -1,4 +1,4 @@
-class Coins extends DrawableObject {
+class Coins extends MovableObject {
   offset = {
     top: 30,
     left: 30,
@@ -28,7 +28,7 @@ class Coins extends DrawableObject {
 
 
 collectCoin() {
-  let i = this.currentImage % this.IMAGES_COIN.length;
+  let i = this.currentImage % this.IMAGE_COIN.length;
   this.playAnimation(this.IMAGE_COIN);
 }
  

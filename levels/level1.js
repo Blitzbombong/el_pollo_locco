@@ -19,24 +19,28 @@ const level1 = new Level(
         new Clouds('img/5_background/layers/4_clouds/2.png', 2800)
     ],
     [
-        new Coins(),
-        new Coins(),
-        new Coins(),
-        new Coins(),
-        new Coins(),
-        new Coins()
+        new Coins(400, 300, 50, 50),
+            new Coins(500, 300, 50, 50),
+            new Coins(600, 300, 50, 50),
+            new Coins(950, 200, 50, 50),
+            new Coins(1020, 150, 50, 50),
+            new Coins(1090, 200, 50, 50),
+            new Coins(1600, 160, 50, 50),
+            new Coins(1700, 220, 50, 50),
+            new Coins(1800, 280, 50, 50),
+            new Coins(2900, 180, 200, 200)
     ],
     [
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
-        new SalsaBottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png', 250, 350, 80, 80),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new SalsaBottle(250, 350, 80, 80, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png')
     ],
     [
         new Endboss()

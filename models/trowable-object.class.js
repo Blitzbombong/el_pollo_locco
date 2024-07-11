@@ -34,7 +34,7 @@ class TrowableObject extends MovableObject {
         trow(x, y) {
           this.speedY = 30;
           this.applyGravity();
-          if (world.charakter.otherDirection) {
+          if (world.character.otherDirection) {
               this.speedX = -10; 
           } else {
               this.speedX = 10;  
@@ -46,8 +46,8 @@ class TrowableObject extends MovableObject {
       }
 
       throwBottle() {
-        let i = this.currentImage % this.IMAGES_BOTTLE_ROTATION.length;
-        this.playAnimation(this.IMAGES_BOTTLE_ROTATION);
+        let i = this.currentImage % this.IMAGE_THROWBOTTLE.length;
+        this.playAnimation(this.IMAGE_THROWBOTTLE);
     }
 
 }
