@@ -1,18 +1,20 @@
 class MovableObject extends DrawableObject {
-  speed;
+  speed = 0.15;
+  acceleration = 1.5;
   otherDirection = false;
   speedY = 0;
-  acceletation = 2.5;
   energy = 100;
+  energyEndBoss = 100;
+  statusBottles = 0;
+  statusCoins = 0;
   lastHit = 0;
-  currentHit = false;
 
   offset = {
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0
-};
+    bottom: 0,
+  };
 
   // Gravitation lasst gegenstande runter fahlen
   applyGravity() {
@@ -28,15 +30,19 @@ class MovableObject extends DrawableObject {
 
   // Pruft ob das Object auf dem Boden ist
   isAboveGround() {
-    if (this instanceof TrowableObject) {
-      return true;
+    if (this instanceof ThowableObject) {
+      return this.y < 402;
     } else {
-      if (this instanceof Character) {
-        return this.y < 180;
-      } else {
-        return this.y < 340;
-      }
+      return this.y < 202;
     }
+  }
+
+  playAnimation(images) {
+    let i = this.currentImage % images.length; // let i = 7 % 6; => 1. Rest 1
+    // i = 0, 1, 2, 3, 4, 5, , 0, 1 .... wiederhlt die Zahlen von 0 bis 5
+    let path = images[i];
+    this.img = this.imageCache[path];
+    this.currentImage++;
   }
 
   // Bessere Formel zur Kollisionsberechnung (Genauer)
@@ -59,6 +65,50 @@ class MovableObject extends DrawableObject {
     }
   }
 
+  hitEndboss() {
+    this.energyEndboss -= 1.7;
+    if (this.energy < 0) {
+      this.energy = 0;
+    }
+  }
+
+  touchCoints() {
+    this.statusCoins += 20;
+    if (this.statusCoins > 100) {
+      this.statusCoins = 100;
+    }
+  }
+
+  touchBottle() {
+    this.statusBottles += 20;
+    if (this.statusBottles > 100) {
+      this.statusBottles = 100;
+    }
+  }
+
+  throwBottle() {
+    this.statusBottles -= 20;
+    if (this.statusBottles < 0) {
+      this.statusBottles = 0;
+    }
+  }
+
+  endPlayAnimation() {
+    if (soundOn) {
+      this.chicken_sound.play();
+    }
+    this.y = 410;
+    this.speed = 0;
+    setTimeout(() => {
+      this.width = 0;
+      this.height = 0;
+      this.y = 900;
+    }, 500);
+    setTimeout(() => {
+      this.isDead = false;
+    }, 800);
+  }
+
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; // Differenz in mili Secunden
     timepassed = timepassed / 1000; // Differenz in Sekunden
@@ -77,15 +127,7 @@ class MovableObject extends DrawableObject {
     this.x -= this.speed;
   }
 
-  playAnimation(images) {
-    let i = this.currentImage % images.length; // let i = 7 % 6; => 1. Rest 1
-    // i = 0, 1, 2, 3, 4, 5, , 0, 1 .... wiederhlt die Zahlen von 0 bis 5
-    let path = images[i];
-    this.img = this.imageCache[path];
-    this.currentImage++;
-  }
-
   jump() {
-    this.speedY = 30;
+    this.speedY = 20;
   }
 }
