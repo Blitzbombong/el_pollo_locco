@@ -1,4 +1,4 @@
-class TrowableObject extends MovableObject {
+class ThrowableObject extends MovableObject {
     offset = {
         top: 10,
         left: 10,

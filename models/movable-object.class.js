@@ -30,7 +30,7 @@ class MovableObject extends DrawableObject {
 
   // Pruft ob das Object auf dem Boden ist
   isAboveGround() {
-    if (this instanceof ThowableObject) {
+    if (this instanceof ThrowableObject) {
       return this.y < 402;
     } else {
       return this.y < 202;
