@@ -7,6 +7,13 @@ class MovableObject extends DrawableObject {
   lastHit = 0;
   currentHit = false;
 
+  offset = {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0
+};
+
   // Gravitation lasst gegenstande runter fahlen
   applyGravity() {
     setInterval(() => {

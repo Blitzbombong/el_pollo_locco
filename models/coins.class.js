@@ -1,36 +1,28 @@
 class Coins extends MovableObject {
+  width = 70;
+  height = 70;
+
   offset = {
     top: 30,
     left: 30,
     right: 30,
     bottom: 30,
   };
-  
-  IMAGE_COIN = [
-    "img/8_coin/coin_1.png", 
-    "img/8_coin/coin_2.png"
-  ];
 
-  constructor(x, y, height, width) {
+  IMAGE_COIN = ["img/8_coin/coin_1.png", "img/8_coin/coin_2.png"];
+
+  constructor() {
     super().loadImage("img/8_coin/coin_1.png");
     this.loadImages(this.IMAGE_COIN);
-    this.x = x;
-    this.y = y;
-    this.height = height;
-    this.width = width;
-    this.collectSound = new Audio("audio/coin_sound.mp3");
-    this.animate();
+
+    this.x = 1200 + Math.random() * 500;
+    this.y = 250 + Math.random() * 350;
+    this.imgAnimate();
   }
 
-  animate() {
-    setInterval(() => this.collectCoin(), 650);
-}
-
-
-collectCoin() {
-  let i = this.currentImage % this.IMAGE_COIN.length;
-  this.playAnimation(this.IMAGE_COIN);
-}
- 
-
+  imgAnimate() {
+    setInterval(() => {
+      this.playanimation(this.images);
+    }, 500);
+  }
 }
