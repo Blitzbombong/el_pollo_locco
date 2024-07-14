@@ -1,5 +1,8 @@
-class SalsaBottle extends DrawableObject {
-  
+class SalsaBottle extends MovableObject {
+  width = 50;
+  height = 70;
+  world;
+
   offset = {
     top: 10,
     left: 10,
@@ -7,12 +10,10 @@ class SalsaBottle extends DrawableObject {
     bottom: 10,
   };
 
-  constructor(x, y, img) {
-    super().loadImage(img);
-    this.x = x;
-    this.y = y;
-    this.width = 50;
-    this.height = 70;
-    this.collectSound = new Audio("audio/cllect-bottle.mp3");
+  constructor() {
+    super().loadImage("img/6_salsa_bottle/2_salsa_bottle_on_ground.png");
+
+    this.x = 200 + Math.random() * 2500;
+    this.y = 120 + Math.random() * 200;
   }
 }
