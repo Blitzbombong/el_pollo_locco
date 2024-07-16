@@ -6,13 +6,16 @@ class World {
   camera_x = 0;
   character = new Character();
   statusBarHealt = new StatusBarHealt();
-  statusBarCoints = new StatusBarCoin();
+  statusBarCoints = new StatusBarCoints();
   statusBarBottle = new StatusBarBottle();
   statusBarEndboss = new StatusBarEndboss();
   endboss = new Endboss();
-  enemies = level1.enemies;
-  clouds = level1.clouds;
   trowableObject = [];
+
+  coin_sound = new Audio("audio/coin_sound.mp3");
+  bottle_sound = new Audio("audio/cllect-bottle.mp3");
+  //./audio/bottle1.mp3
+
   coints = [
     new Coints(),
     new Coints(),
@@ -162,17 +165,17 @@ class World {
   checkCollisionsCoints() {
     this.coin_sound.pause();
     this.coints.forEach((coints, index) => {
-        if (this.character.isColliding(coints)) {
-            this.character.touchCoints();
-            this.statusBarCoints.setPercentCoints(this.character.crowdCionts);
-            this.ctx.clearRect(coints.x, coints.y, coints.width, coints.height);
-            this.coints.splice(index, 1);
-            if (soundOn) {
-                this.coin_sound.play();
-            }
+      if (this.character.isColliding(coints)) {
+        this.character.touchCoints();
+        this.statusBarCoints.setPercentCoints(this.character.crowdCionts);
+        this.ctx.clearRect(coints.x, coints.y, coints.width, coints.height);
+        this.coints.splice(index, 1);
+        if (soundOn) {
+          this.coin_sound.play();
         }
+      }
     });
-}
+  }
 
   setWorld() {
     this.character.world = this;
@@ -189,15 +192,15 @@ class World {
     this.ctx.translate(-this.camera_x, 0);
 
     this.addToMap(this.statusBarHealt);
-    this.addToMap(this.statusBarCoin);
+    this.addToMap(this.statusBarCoints);
     this.addToMap(this.statusBarBottle);
 
     this.ctx.translate(this.camera_x, 0);
 
     this.addToMap(this.character);
 
-    this.addObjectsToMap(this.level.coins);
-    this.addObjectsToMap(this.level.salsaBottle);
+    this.addObjectsToMap(this.level.coints);
+    this.addObjectsToMap(this.level.bottle);
     this.addObjectsToMap(this.trowableObject);
     this.addObjectsToMap(this.level.endboss);
     this.addObjectsToMap(this.level.enemies);
