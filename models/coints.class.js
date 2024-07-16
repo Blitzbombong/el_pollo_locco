@@ -1,4 +1,4 @@
-class Coins extends MovableObject {
+class Coints extends MovableObject {
   width = 70;
   height = 70;
 
