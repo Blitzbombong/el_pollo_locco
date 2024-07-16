@@ -1,5 +1,5 @@
-class StatusBarCoin extends DrawableObject {
-  IMAGES_COIN = [
+class StatusBarCoints extends DrawableObject {
+  IMAGES_COINTS = [
     "img/7_statusbars/1_statusbar/1_statusbar_coin/green/0.png",
     "img/7_statusbars/1_statusbar/1_statusbar_coin/green/20.png",
     "img/7_statusbars/1_statusbar/1_statusbar_coin/green/40.png",
@@ -12,17 +12,17 @@ class StatusBarCoin extends DrawableObject {
 
   constructor() {
     super();
-    this.loadImages(this.IMAGES_COIN);
+    this.loadImages(this.IMAGES_COINTS);
     this.x = 10;
     this.y = 40;
     this.width = 200;
     this.height = 50;
-    this.setPercentageCoins(0);
+    this.setPercentageCoints(0);
   }
 
-  setPercentageCoins(percentage) {
+  setPercentageCoints(percentage) {
     this.percentage = percentage;
-    let path = this.IMAGES_COIN[this.resolveImageIndex()];
+    let path = this.IMAGES_COINTS[this.resolveImageIndex()];
     this.img = this.imageCache[path];
   }
 

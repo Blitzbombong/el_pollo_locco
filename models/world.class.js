@@ -6,34 +6,34 @@ class World {
   camera_x = 0;
   character = new Character();
   statusBarHealt = new StatusBarHealt();
-  statusBarCoin = new StatusBarCoin();
+  statusBarCoints = new StatusBarCoin();
   statusBarBottle = new StatusBarBottle();
   statusBarEndboss = new StatusBarEndboss();
   endboss = new Endboss();
   enemies = level1.enemies;
   clouds = level1.clouds;
   trowableObject = [];
-  coins = [
-    new Coins(),
-    new Coins(),
-    new Coins(),
-    new Coins(),
-    new Coins(),
-    new Coins(),
-    new Coins(),
-    new Coins(),
+  coints = [
+    new Coints(),
+    new Coints(),
+    new Coints(),
+    new Coints(),
+    new Coints(),
+    new Coints(),
+    new Coints(),
+    new Coints(),
   ];
-  salsaBottle = [
-    new salsaBottle(),
-    new salsaBottle(),
-    new salsaBottle(),
-    new salsaBottle(),
-    new salsaBottle(),
-    new salsaBottle(),
-    new salsaBottle(),
-    new salsaBottle(),
+  bottle = [
+    new Bottle(),
+    new Bottle(),
+    new Bottle(),
+    new Bottle(),
+    new Bottle(),
+    new Bottle(),
+    new Bottle(),
+    new Bottle(),
   ];
-  salsaBottles;
+  bottles;
   hitCount = 0;
 
   constructor(canvas, keyboard) {
