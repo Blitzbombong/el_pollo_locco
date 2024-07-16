@@ -159,8 +159,25 @@ class World {
     });
   }
 
+  checkCollisionsCoints() {
+    this.coin_sound.pause();
+    this.coints.forEach((coints, index) => {
+        if (this.character.isColliding(coints)) {
+            this.character.touchCoints();
+            this.statusBarCoints.setPercentCoints(this.character.crowdCionts);
+            this.ctx.clearRect(coints.x, coints.y, coints.width, coints.height);
+            this.coints.splice(index, 1);
+            if (soundOn) {
+                this.coin_sound.play();
+            }
+        }
+    });
+}
+
   setWorld() {
     this.character.world = this;
+    this.endboss.world = this;
+    this.statusBarEndboss.world = this;
   }
 
   draw() {
@@ -169,8 +186,8 @@ class World {
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.backgroundObject);
     this.addObjectsToMap(this.level.clouds);
-
     this.ctx.translate(-this.camera_x, 0);
+
     this.addToMap(this.statusBarHealt);
     this.addToMap(this.statusBarCoin);
     this.addToMap(this.statusBarBottle);
