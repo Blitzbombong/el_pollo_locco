@@ -15,13 +15,14 @@ class StatusBarEndboss extends DrawableObject {
     this.height = 70;
     this.x = 3500;
     this.y = 30;
-    setPercentageEndboss(100);
+    this.setPercentageEndboss(100);
+    this.moveStatusbar();
   }
 
-  moveEndbossStatusBar() {
+  moveStatusbar() {
     setInterval(() => {
       const distance = world.endboss.x + 50;
-      this.x -= distance;
+      this.x = distance;
     }, 1000 / 60);
   }
 
@@ -32,15 +33,15 @@ class StatusBarEndboss extends DrawableObject {
   }
 
   resolveImageIndex() {
-    if (this.percent == 100) {
+    if (this.percentage == 100) {
       return 5;
-    } else if (this.percent > 80) {
+    } else if (this.percentage > 80) {
       return 4;
-    } else if (this.percent > 60) {
+    } else if (this.percentage > 60) {
       return 3;
-    } else if (this.percent > 40) {
+    } else if (this.percentage > 40) {
       return 2;
-    } else if (this.percent > 20) {
+    } else if (this.percentage > 20) {
       return 1;
     } else {
       return 0;

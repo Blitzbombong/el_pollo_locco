@@ -44,7 +44,7 @@ class Chicken extends MovableObject {
   imgAnimate() {
     setInterval(() => {
       this.chicken_sound.pause();
-      if (!this.isDead()) {
+      if (!this.isDead) {
         this.playAnimation(this.IMAGES_WALKING);
       } else {
         this.playAnimation(this.IMAGES_DEAD);

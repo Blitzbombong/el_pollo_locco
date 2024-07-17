@@ -39,9 +39,9 @@ class DrawableObject {
     if (
       this instanceof Character ||
       this instanceof Chicken ||
-      this instanceof SmallChicken ||
-      this instanceof Coins ||
-      this instanceof SalsaBottle ||
+      this instanceof Chickensmall ||
+      this instanceof Coints ||
+      this instanceof Bottle ||
       this instanceof Endboss
     ) {
       // Rand um die charaktere animieren - spater muss man die wieder entfernen

@@ -187,6 +187,7 @@ class World {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // Clear the Canvas.
 
     this.ctx.translate(this.camera_x, 0);
+
     this.addObjectsToMap(this.level.backgroundObject);
     this.addObjectsToMap(this.level.clouds);
     this.ctx.translate(-this.camera_x, 0);
@@ -194,16 +195,19 @@ class World {
     this.addToMap(this.statusBarHealt);
     this.addToMap(this.statusBarCoints);
     this.addToMap(this.statusBarBottle);
+    
 
     this.ctx.translate(this.camera_x, 0);
 
     this.addToMap(this.character);
-
-    this.addObjectsToMap(this.level.coints);
-    this.addObjectsToMap(this.level.bottle);
-    this.addObjectsToMap(this.trowableObject);
-    this.addObjectsToMap(this.level.endboss);
     this.addObjectsToMap(this.level.enemies);
+
+    this.addObjectsToMap(this.coints);
+    this.addObjectsToMap(this.bottle);
+    this.addToMap(this.endboss);
+    this.addToMap(this.statusBarEndboss);
+    this.addObjectsToMap(this.trowableObject);
+    
 
     this.ctx.translate(-this.camera_x, 0);
 

@@ -115,11 +115,7 @@ class Character extends MovableObject {
 
   //condition for move the character right
   isMoveRight() {
-    return (
-      this.world.keyboard.RIGHT &&
-      this.x < this.world.level.level_end_x &&
-      !this.isMoved
-    );
+    return this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.isMoved;
   }
 
   //condition for move the character left
@@ -148,7 +144,7 @@ class Character extends MovableObject {
   }
 
   isCharacterDead() {
-    this.playanimation(this.IMAGES_DEAD);
+    this.playAnimation(this.IMAGES_DEAD);
     this.isMoved = true;
     if (soundOn) {
       this.dead_sound.play();
@@ -187,13 +183,13 @@ class Character extends MovableObject {
   //short function for animation then character is jump
   isAboveGroundShortFunction() {
     this.isIdleLong = false;
-    this.playanimation(this.imagesJumping);
+    this.playAnimation(this.IMAGES_JUMPING);
   }
 
   //short function for animation then character is move to
   isAnimationMovingCharacterShortFunction() {
     this.isIdleLong = false;
-    this.playanimation(this.imagesWalking);
+    this.playAnimation(this.IMAGES_WALKING);
   }
 
   //condition for aninmation the character thwn is move right
@@ -203,7 +199,7 @@ class Character extends MovableObject {
 
   //function animation character then chracter ist hurt
   isHurtAnimationCharacter() {
-    this.playanimation(this.imagesHurts);
+    this.playAnimation(this.IMAGES_HURT);
     if (soundOn) {
       this.hurt_sound.play();
     }

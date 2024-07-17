@@ -9,43 +9,46 @@ gameAudio.src = "audio/game.mp3";
 gameAudio.loop = true;
 let soundOn = false;
 let tip = new Audio();
-tip.src = "audio/tip.mp3";
+tip.src = "audio/music.mp3";
 
 function startGame() {
   tip.play();
-  document.getElementById("startButton").classList.add("d-none");
-  document.getElementById("startImage").classList.add("d-none");
-  document.getElementsByClassName("bi-controller")[0].style.visibility =
-    "hidden";
-  inetLevel();
-
-  canvas = document.getElementById("canvas");
+  document.getElementById('startButton').classList.add('d-none');
+  document.getElementById('startImage').classList.add('d-none');
+  document.getElementsByClassName("bi-controller")[0].style.visibility = "hidden";
+  initLevel();
+  canvas = document.getElementById('canvas');
   world = new World(canvas, keyboard);
   addMobileControlPanel();
+  console.log('My Charakter is', world.character);
+
 }
 
+
+//inject mobile control panel into DOM for mobile gaming
 function addMobileControlPanel() {
-  let divCanvas = document.getElementById("divCanvas");
+  let divCanvas = document.getElementById('divCanvas');
   divCanvas.append(addMobileControlPanelTemplate());
   addEventListenersToPanel();
 }
 
+//HTML templates
 function addMobileControlPanelTemplate() {
   let panel = document.createElement("div");
   panel.classList.add("mobile-control-panel");
   panel.innerHTML = /*html*/ `
         <div class="mobileControl">
-            <i class="mobileControlButton bi bi-arrow-left-square" id="left"></i>
-            <i class="mobileControlButton bi bi-arrow-right-square" id="right"></i>
+          <i class="mobileControlButton bi bi-arrow-left-square" id="left"></i>
+          <i class="mobileControlButton bi bi-arrow-right-square" id="right"></i>
         </div>
         <div class="mobileControlButton mobileControl">
-            <i class="mobileControlButton bi bi-arrow-bar-up" id="jump"></i>
-            <i class="mobileControlButton bi bi-fire" id="throw"></i>
+          <i class="mobileControlButton bi bi-arrow-bar-up" id="jump"></i>
+          <i class="mobileControlButton bi bi-fire" id="throw"></i>
         </div>
-    `;
-
-  return panel;
+  `;
+  return panel
 }
+
 
 function addEventListenersToPanel() {
   const throW = document.getElementById("throw");
@@ -149,3 +152,73 @@ window.addEventListener("keyup", (e) => {
     keyboard.THROW = false;
   }
 });
+
+function fullscreenMode() {
+  let divCanvas = document.getElementById("divCanvas");
+  canvas = document.getElementById("canvas");
+
+  if (!fullscreen && window.innerHeight > 480) {
+    divCanvas.requestFullscreen();
+    fullscreen = true;
+    canvas.classList.add("fullscreen");
+  } else if (!fullscreen && window.innerHeight > 480) {
+    document.documentElement.requestFullscreen();
+    fullscreen = true;
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+document.addEventListener("fullscreenchange", (event) => {
+  if (!document.fullscreenElement) {
+    fullscreen = false;
+    canvas.classList.remove("fullscreen");
+  }
+});
+
+function renderGameOver() {
+  document.getElementById("gameOver").style.display = "flex";
+  delete world;
+  canvas.style.display = "none";
+  document.getElementsByClassName("icon-container")[0].style.display = "none";
+  if (fullscreen) {
+    document.getElementById("gameOver").classList.add("fullscreen");
+  }
+  if (window.innerHeight < 480) {
+    document.getElementsByClassName("mobile-control-panel")[0].style.display =
+      "none";
+  }
+}
+
+function backToMenuButton() {
+  window.location.reload();
+  tip.play();
+  setTimeout(() => {
+    document.getElementById("gameOver").classList.add("d-none");
+  }, 2000);
+}
+
+function infoGame() {
+  tip.play();
+  document.getElementById("gameInfo").classList.remove("d-none");
+}
+
+function closeInfoGame() {
+  tip.play();
+  document.getElementById("gameInfo").classList.add("d-none");
+}
+
+function playSound() {
+  let icon = document.getElementsById("playGameSound");
+    if (soundOn) {
+      icon.classList.remove("bi-volume-up-fill");
+      icon.classList.add("bi-volume-mute");
+      gameAudio.pause();
+      soundOn = false;
+    } else {
+      icon.classList.remove("bi-volume-mute");
+      icon.classList.add("bi-volume-up-fill"); 
+      gameAudio.play();
+      soundOn = true;
+    }
+}
