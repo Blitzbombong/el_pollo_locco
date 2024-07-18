@@ -170,7 +170,7 @@ class Character extends MovableObject {
     } else if (this.isAnimationMovingCharacter()) {
       this.isAnimationMovingCharacterShortFunction();
     } else if (this.isIdle) {
-      this.playanimation(this.IMAGES_IDLE);
+      this.playAnimation(this.IMAGES_IDLE);
     }
   }
 

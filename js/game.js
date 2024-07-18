@@ -5,7 +5,7 @@ let fullscreen = false;
 let divCanvas = document.getElementById("divCanvas");
 
 let gameAudio = new Audio();
-gameAudio.src = "audio/game.mp3";
+gameAudio.src = "audio/game_sound.mp3";
 gameAudio.loop = true;
 let soundOn = false;
 let tip = new Audio();
@@ -153,7 +153,7 @@ window.addEventListener("keyup", (e) => {
   }
 });
 
-function fullscreenMode() {
+function fullScreen() {
   let divCanvas = document.getElementById("divCanvas");
   canvas = document.getElementById("canvas");
 
@@ -203,13 +203,13 @@ function infoGame() {
   document.getElementById("gameInfo").classList.remove("d-none");
 }
 
-function closeInfoGame() {
+function closeInfo() {
   tip.play();
   document.getElementById("gameInfo").classList.add("d-none");
 }
 
 function playSound() {
-  let icon = document.getElementsById("playGameSound");
+  let icon = document.getElementById("playGameSound");
     if (soundOn) {
       icon.classList.remove("bi-volume-up-fill");
       icon.classList.add("bi-volume-mute");

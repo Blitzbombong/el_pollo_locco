@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=100, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./img/2_character_pepe/1_idle/idle/I-1.png" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
     <title>El Pollo Loco</title>
     <script src="models/drawable-object.class.js"></script>
@@ -38,7 +38,7 @@
 
     <h1 class="headLine">El pollo loco</h1>
 
-    <div class="divCanvas">
+    <div class="divCanvas" id="divCanvas">
 
         <canvas class="canvas" id="canvas" width="720" height="480">
 
@@ -51,8 +51,8 @@
         <button onclick="startGame()" class="startButton" id="startButton">Start</button>
 
         <div class="icon-container">
-            <i class="bi bi-volume-up-fill" id="playGameSound" onclick="playGameSound()"></i>
             <i class="bi bi-controller" id="infoGame" onclick="infoGame()"></i>
+            <i class="bi bi-volume-up" id="playGameSound" onclick="playSound()"></i>
             <i class="bi bi-arrows-fullscreen" id="fullScreenImage" onclick="fullScreen()"></i>
         </div>
 

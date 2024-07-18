@@ -91,7 +91,7 @@ class World {
           enemie.isDead = true;
         } else {
           this.character.hit();
-          this.statusBarHealt.setPercentage(this.character.energy);
+          this.statusBarHealt.setPercetage(this.character.energy);
         }
       }
     });

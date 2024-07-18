@@ -22,7 +22,7 @@ class Coints extends MovableObject {
 
   imgAnimate() {
     setInterval(() => {
-      this.playAnimation(this.images);
+      this.playAnimation(this.IMAGE_COIN);
     }, 500);
   }
 }
