@@ -17,12 +17,12 @@ function initLevel()  {
             new Chickensmall()
         ],
         [
-            new Clouds('img/5_background/layers/4_clouds/1.png', 150),
-            new Clouds('img/5_background/layers/4_clouds/2.png', 300),
-            new Clouds('img/5_background/layers/4_clouds/1.png', 700),
-            new Clouds('img/5_background/layers/4_clouds/2.png', 1400),
-            new Clouds('img/5_background/layers/4_clouds/1.png', 2200),
-            new Clouds('img/5_background/layers/4_clouds/2.png', 2800)
+            new Clouds('img/5_background/layers/4_clouds/1.png'),
+            new Clouds('img/5_background/layers/4_clouds/2.png'),
+            new Clouds('img/5_background/layers/4_clouds/1.png'),
+            new Clouds('img/5_background/layers/4_clouds/2.png'),
+            new Clouds('img/5_background/layers/4_clouds/1.png'),
+            new Clouds('img/5_background/layers/4_clouds/2.png')
         ],
         [
             new BackgroundObject('img/5_background/layers/air.png', -719),

@@ -1,6 +1,6 @@
 class Bottle extends MovableObject {
   width = 50;
-  height = 70;
+  height = 80;
   world;
 
   offset = {
@@ -10,8 +10,16 @@ class Bottle extends MovableObject {
     bottom: 10,
   };
 
+  IMAGES_ROTATION = [
+    'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
+    'img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png',
+    'img/6_salsa_bottle/bottle_rotation/3_bottle_rotation.png',
+    'img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png'
+  ]
+
   constructor() {
-    super().loadImage("img/6_salsa_bottle/2_salsa_bottle_on_ground.png");
+    super().loadImage("img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png");
+    this.loadImages(this.IMAGES_ROTATION);
 
     this.x = 200 + Math.random() * 2500;
     this.y = 120 + Math.random() * 200;

@@ -2,7 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let fullscreen = false;
-let divCanvas = document.getElementById("divCanvas");
+let divCanvas = document.getElementById('divCanvas');
 
 let gameAudio = new Audio();
 gameAudio.src = "audio/game_sound.mp3";
@@ -46,7 +46,7 @@ function addMobileControlPanelTemplate() {
           <i class="mobileControlButton bi bi-fire" id="throw"></i>
         </div>
   `;
-  return panel
+  return panel;
 }
 
 
@@ -154,8 +154,8 @@ window.addEventListener("keyup", (e) => {
 });
 
 function fullScreen() {
-  let divCanvas = document.getElementById("divCanvas");
-  canvas = document.getElementById("canvas");
+  let divCanvas = document.getElementById('divCanvas');
+  canvas = document.getElementById('canvas');
 
   if (!fullscreen && window.innerHeight > 480) {
     divCanvas.requestFullscreen();
@@ -185,8 +185,7 @@ function renderGameOver() {
     document.getElementById("gameOver").classList.add("fullscreen");
   }
   if (window.innerHeight < 480) {
-    document.getElementsByClassName("mobile-control-panel")[0].style.display =
-      "none";
+    document.getElementsByClassName("mobile-control-panel")[0].style.display ="none";
   }
 }
 

@@ -15,10 +15,10 @@ class Chicken extends MovableObject {
   IMAGES_DEAD = ["img/3_enemies_chicken/chicken_normal/2_dead/dead.png"];
 
   offset = {
-    top: 30,
-    left: 30,
-    right: 30,
-    bottom: 30,
+    top: 70,
+    left: 50,
+    right: 50,
+    bottom: 70,
   };
 
   currentImage = 0;

@@ -7,10 +7,10 @@ class Chickensmall extends MovableObject {
   chicken_sound = new Audio("audio/chiken.mp3");
 
   offset = {
-    top: 30,
-    left: 30,
-    right: 30,
-    bottom: 30,
+    top: 50,
+    left: 50,
+    right: 50,
+    bottom: 50,
   };
 
   IMAGE_WALKING = [
