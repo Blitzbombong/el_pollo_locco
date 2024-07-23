@@ -5,11 +5,11 @@ let fullscreen = false;
 let divCanvas = document.getElementById('divCanvas');
 
 let gameAudio = new Audio();
-gameAudio.src = "audio/game_sound.mp3";
+gameAudio.src = "audio/music.mp3";
 gameAudio.loop = true;
 let soundOn = false;
 let tip = new Audio();
-tip.src = "audio/music.mp3";
+tip.src = "audio/tip1.mp3";
 
 function startGame() {
   tip.play();

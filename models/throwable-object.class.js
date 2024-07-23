@@ -32,30 +32,20 @@ class ThrowableObject extends MovableObject {
   }
 
   trow() {
-    this.initBottle();
-    this.moveBottle();
-    this.animateBottle();
-  }
+    this.speedY = 10;
+    this.applyGravaty();
 
-  initBottle() {
-    this.speedy = 10;
-    this.applyGravity();
-  }
-
-  moveBottle() {
     setInterval(() => {
       if (!this.stopToMoveBottle) {
         this.x += 8;
       }
     }, 25);
-  }
 
-  animateBottle() {
     setInterval(() => {
-      if (!this.stopToMoveBottle) {
-        this.playAnimation(this.IMAGE_ROTATION);
-      } else {
-        this.playAnimation(this.IMAGE_SPLASH);
+      if (!this.isBottleSplash) {
+        this.playanimation(this.IMAGE_ROTATION);
+      } else if (this.isBottleSplash) {
+        this.playanimation(this.IMAGE_SPLASH);
         this.x += 0.001;
         setTimeout(() => {
           this.isBottleSplash = false;

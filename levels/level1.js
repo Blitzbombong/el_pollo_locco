@@ -16,6 +16,7 @@ function initLevel()  {
             new Chickensmall(),
             new Chickensmall()
         ],
+
         [
             new Clouds('img/5_background/layers/4_clouds/1.png'),
             new Clouds('img/5_background/layers/4_clouds/2.png'),
@@ -24,6 +25,7 @@ function initLevel()  {
             new Clouds('img/5_background/layers/4_clouds/1.png'),
             new Clouds('img/5_background/layers/4_clouds/2.png')
         ],
+        
         [
             new BackgroundObject('img/5_background/layers/air.png', -719),
             new BackgroundObject('img/5_background/layers/3_third_layer/2.png', -719),

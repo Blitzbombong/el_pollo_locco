@@ -5,8 +5,8 @@ class MovableObject extends DrawableObject {
   speedY = 0;
   energy = 100;
   energyEndBoss = 100;
-  statusBottles = 0;
-  statusCoins = 0;
+  crowdBottles = 0;
+  crowdCoins = 0;
   lastHit = 0;
 
   offset = {
@@ -73,23 +73,23 @@ class MovableObject extends DrawableObject {
   }
 
   touchCoints() {
-    this.statusCoins += 20;
-    if (this.statusCoins > 100) {
-      this.statusCoins = 100;
+    this.crowdCoins += 20;
+    if (this.crowdCoins > 100) {
+      this.crowdCoins = 100;
     }
   }
 
   touchBottle() {
-    this.statusBottles += 20;
-    if (this.statusBottles > 100) {
-      this.statusBottles = 100;
+    this.crowdBottle += 20;
+    if (this.crowdBottle > 100) {
+      this.crowdBottle = 100;
     }
   }
 
   throwBottle() {
-    this.statusBottles -= 20;
-    if (this.statusBottles < 0) {
-      this.statusBottles = 0;
+    this.crowdBottle -= 20;
+    if (this.crowdBottle < 0) {
+      this.crowdBottle = 0;
     }
   }
 
