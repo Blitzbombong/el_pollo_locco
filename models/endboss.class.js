@@ -17,7 +17,7 @@ class Endboss extends MovableObject {
 
   chickenBossAlert_sound = new Audio("audio/boss_music.mp3");
   chickenBossHurt_sound = new Audio("audio/boss_hurt.mp3");
-  chickenBossDead_sound = new Audio("audio/win.mp3");
+  chickenBossDead_sound = new Audio("audio/dead.mp3");
 
   IMAGES_WALKING = [
     'img/4_enemie_boss_chicken/1_walk/G1.png',

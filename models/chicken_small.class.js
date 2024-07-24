@@ -4,7 +4,7 @@ class Chickensmall extends MovableObject {
   y = 403;
   x = 50;
   isDead = false;
-  chicken_sound = new Audio("audio/chiken.mp3");
+  chicken_sound = new Audio("audio/chiken-small.mp3");
 
   offset = {
     top: 50,

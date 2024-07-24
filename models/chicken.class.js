@@ -4,7 +4,7 @@ class Chicken extends MovableObject {
   y = 345;
   speed = 10;
   isDead = false;
-  chicken_sound = new Audio("audio/chiken.mp3");
+  chicken_sound = new Audio("audio/chicken.mp3");
 
   IMAGES_WALKING = [
     "img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
