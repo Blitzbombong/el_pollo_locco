@@ -21,8 +21,8 @@ class World {
   bottles;
   hitCount = 0;
 
-  coin_sound = new Audio("audio/coin_sound.mp3");
-  bottle_sound = new Audio("audio/cllect-bottle.mp3");
+  coin_sound = new Audio("audio/coin.mp3");
+  bottle_sound = new Audio("audio/bottle.mp3");
 
   
   constructor(canvas, keyboard) {
@@ -49,7 +49,8 @@ class World {
 
   checkThrowableObjects() {
     if (this.character.crowdBottle > 0) {
-      if (this.keyboard.THROW && (!this.latstThrowTime || Date.now() - this.latstThrowTime > 500)) {
+      if (this.keyboard.S && (!this.latstThrowTime || Date.now() - this.latstThrowTime > 500)) {
+        console.log("Keyboard THROW is true and time since last throw is greater than 500ms");
         let bottles = new ThrowableObject(this.character.x + 20,this.character.y + 20);
         this.throwableObjects.push(bottles);
         this.character.throwBottle();
@@ -179,7 +180,7 @@ class World {
 
     this.ctx.translate(this.camera_x, 0);
 
-    this.addObjectsToMap(this.level.backgroundObject);
+    this.addObjectsToMap(this.level.backgrounds);
     this.addObjectsToMap(this.level.clouds);
     this.ctx.translate(-this.camera_x, 0);
 

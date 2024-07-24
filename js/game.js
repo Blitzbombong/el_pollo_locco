@@ -88,12 +88,12 @@ function addEventListenersToPanel() {
 
   throW.addEventListener("touchstart", (e) => {
     e.preventDefault();
-    keyboard.THROW = true;
+    keyboard.S = true;
   });
 
   throW.addEventListener("touchend", (e) => {
     e.preventDefault();
-    keyboard.THROW = false;
+    keyboard.S = false;
   });
 }
 
@@ -120,7 +120,7 @@ window.addEventListener("keydown", (e) => {
   }
 
   if (e.keyCode == 83) {
-    keyboard.THROW = true;
+    keyboard.S = true;
   }
 
   console.log(e);
@@ -149,7 +149,7 @@ window.addEventListener("keyup", (e) => {
   }
 
   if (e.keyCode == 83) {
-    keyboard.THROW = false;
+    keyboard.S = false;
   }
 });
 
