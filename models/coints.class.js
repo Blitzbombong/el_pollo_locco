@@ -16,7 +16,7 @@ class Coints extends MovableObject {
     this.loadImages(this.IMAGE_COIN);
 
     this.x = 1200 + Math.random() * 500;
-    this.y = 250 + Math.random() * 350;
+    this.y = 120 + Math.random() * 200;
     this.imgAnimate();
   }
 

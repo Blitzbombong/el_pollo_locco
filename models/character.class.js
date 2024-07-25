@@ -12,9 +12,9 @@ class Character extends MovableObject {
   isMoved = false;
 
   offset = {
-    top: 80,
+    top: 20,
     left: 20,
-    right: 30,
+    right: 20,
     bottom: 10,
   };
 
@@ -105,8 +105,7 @@ class Character extends MovableObject {
     //setInterval for move the character
     setInterval(() => {
       this.isMove();
-
-      this.world.camara_x = -this.x + 100;
+      this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
 
     //setInterval for manimation the character
@@ -114,6 +113,7 @@ class Character extends MovableObject {
       this.characterAninmation();
     }, 190);
   }
+  
 
   //condition for move the character right
   isMoveRight() {
@@ -132,17 +132,17 @@ class Character extends MovableObject {
 
   //function for move the character
   isMove() {
-    if (this.isMoveRight()) {
-      this.moveRight();
-      this.otherDirection = false;
-    }
-    if (this.isMoveLeft()) {
-      this.moveLeft();
-      this.otherDirection = true;
-    }
-    if (this.isJump()) {
-      this.jump();
-    }
+      if (this.isMoveRight()) {
+        this.moveRight();
+        this.otherDirection = false;
+      }
+      if (this.isMoveLeft()) {
+        this.moveLeft();
+        this.otherDirection = true;
+      }
+      if (this.isJump()) {
+        this.jump();
+      }
   }
 
   isCharacterDead() {
