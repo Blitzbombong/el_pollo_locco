@@ -12,10 +12,10 @@ class Character extends MovableObject {
   isMoved = false;
 
   offset = {
-    top: 20,
+    top: 30,
     left: 20,
-    right: 20,
-    bottom: 10,
+    right: 30,
+    bottom: 0,
   };
 
   dead_sound = new Audio("audio/dead.mp3");

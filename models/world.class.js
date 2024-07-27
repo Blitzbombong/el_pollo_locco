@@ -82,6 +82,7 @@ class World {
     this.level.enemies.forEach((enemy) => {
       this.throwableObjects.forEach((bottle) => {
         if (bottle.isColliding(enemy)) {
+          console.log('Collision detected between bottle and enemy');
           enemy.isDead = true;
           bottle.isBottleSplash = true;
           bottle.stopToMoveBottle = true;
@@ -97,7 +98,7 @@ class World {
       setTimeout(() => {
         bottle.isBottleSplash = true;
         bottle.stopToMoveBottle = true;
-      }, 1200);
+      }, 1000);
     });
   }
   

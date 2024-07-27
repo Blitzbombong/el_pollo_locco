@@ -3,10 +3,10 @@ class Coints extends MovableObject {
   height = 70;
 
   offset = {
-    top: 30,
-    left: 30,
-    right: 30,
-    bottom: 30,
+    top: 50,
+    left: 50,
+    right: 50,
+    bottom: 50,
   };
 
   IMAGE_COIN = ["img/8_coin/coin_1.png", "img/8_coin/coin_2.png"];

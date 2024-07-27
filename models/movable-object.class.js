@@ -87,9 +87,9 @@ class MovableObject extends DrawableObject {
   }
 
   throwBottle() {
-    this.crowdBottle -= 20;
-    if (this.crowdBottle < 0) {
-      this.crowdBottle = 0;
+    this.crowdBottles -= 20;
+    if (this.crowdBottles < 0) {
+      this.crowdBottles = 0;
     }
   }
 

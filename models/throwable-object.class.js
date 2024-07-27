@@ -30,7 +30,7 @@ class ThrowableObject extends MovableObject {
   }
 
   trow() {
-    this.speedY = 20;
+    this.speedY = 15;
     this.applyGravity();
     this.a
 
