@@ -80,9 +80,9 @@ class MovableObject extends DrawableObject {
   }
 
   touchBottle() {
-    this.crowdBottle += 20;
-    if (this.crowdBottle > 100) {
-      this.crowdBottle = 100;
+    this.crowdBottles += 20;
+    if (this.crowdBottles > 100) {
+      this.crowdBottles = 100;
     }
   }
 

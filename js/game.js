@@ -123,7 +123,7 @@ window.addEventListener("keydown", (e) => {
     keyboard.S = true;
   }
 
-  console.log(e);
+  //console.log(e);
 });
 
 //settings the tastatur by keyup

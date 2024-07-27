@@ -51,7 +51,7 @@ class World {
     if (this.character.crowdBottle > 0) {
       if (this.keyboard.S && (!this.latstThrowTime || Date.now() - this.latstThrowTime > 500)) {
         console.log("Keyboard THROW is true and time since last throw is greater than 500ms");
-        let bottles = new ThrowableObject(this.character.x + 20,this.character.y + 20);
+        let bottles = new ThrowableObject(this.character.x + 20, this.character.y + 20);
         this.throwableObjects.push(bottles);
         this.character.throwBottle();
         this.statusBarBottle.setPercentageBottle(this.character.crowdBottle);
@@ -144,7 +144,8 @@ class World {
     this.bottle.forEach((bottle, index) => {
       if (this.character.isColliding(bottle)) {
         this.character.touchBottle();
-        this.statusBarBottle.setPercentageBottle(this.character.crowdBottle);
+        this.statusBarBottle.setPercentageBottle(this.character.crowdBottles);
+        console.log(this.character.crowdBottles);
         this.ctx.clearRect(bottle.x, bottle.y, bottle.width, bottle.height);
         this.bottle.splice(index, 1);
         if (soundOn) {
