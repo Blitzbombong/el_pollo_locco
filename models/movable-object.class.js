@@ -6,7 +6,7 @@ class MovableObject extends DrawableObject {
   energy = 100;
   energyEndBoss = 100;
   crowdBottles = 0;
-  crowdCoins = 0;
+  crowdCoints = 0;
   lastHit = 0;
 
   offset = {
@@ -73,9 +73,9 @@ class MovableObject extends DrawableObject {
   }
 
   touchCoints() {
-    this.crowdCoins += 20;
-    if (this.crowdCoins > 100) {
-      this.crowdCoins = 100;
+    this.crowdCoints += 20;
+    if (this.crowdCoints > 100) {
+      this.crowdCoints = 100;
     }
   }
 

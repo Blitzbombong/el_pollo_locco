@@ -160,7 +160,7 @@ class World {
     this.coints.forEach((coints, index) => {
       if (this.character.isColliding(coints)) {
         this.character.touchCoints();
-        this.statusBarCoints.setPercentageCoints(this.character.crowdCionts);
+        this.statusBarCoints.setPercentageCoints(this.character.crowdCoints);
         this.ctx.clearRect(coints.x, coints.y, coints.width, coints.height);
         this.coints.splice(index, 1);
         if (soundOn) {
