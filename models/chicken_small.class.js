@@ -7,10 +7,10 @@ class Chickensmall extends MovableObject {
   chicken_sound = new Audio("audio/chiken-small.mp3");
 
   offset = {
-    top: 50,
-    left: 50,
-    right: 50,
-    bottom: 50,
+    top: 5,
+    left: 5,
+    right: 5,
+    bottom: 5,
   };
 
   IMAGE_WALKING = [
@@ -19,13 +19,13 @@ class Chickensmall extends MovableObject {
     "img/3_enemies_chicken/chicken_small/1_walk/3_w.png",
   ];
 
-  IMAGWE_DEAD = ["img/3_enemies_chicken/chicken_small/2_dead/dead.png"];
+  IMAGE_DEAD = ["img/3_enemies_chicken/chicken_small/2_dead/dead.png"];
   currentImage = 0;
 
   constructor() {
     super().loadImage("img/3_enemies_chicken/chicken_small/1_walk/1_w.png");
     this.loadImages(this.IMAGE_WALKING);
-    this.loadImages(this.IMAGWE_DEAD);
+    this.loadImages(this.IMAGE_DEAD);
     this.x = 200 + Math.random() * 2500;
     this.speed = 0.15 + Math.random() * 0.15;
     this.animate();
@@ -39,8 +39,8 @@ class Chickensmall extends MovableObject {
       if (!this.isDead) {
         this.playAnimation(this.IMAGE_WALKING);
       } else if (this.isDead) {
-        this.playAnimation(this.IMAGWE_DEAD);
-        this.endPlayanimation();
+        this.playAnimation(this.IMAGE_DEAD);
+        this.endPlayAnimation();
       }
     }, 100);
   }
