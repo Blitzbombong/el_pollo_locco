@@ -3,6 +3,7 @@ class Endboss extends MovableObject {
   height = 400;
   y = 50;
   x = 3500;
+  speed = 1;
   offset = {
     top: 50,
     left: 50,
@@ -69,7 +70,7 @@ class Endboss extends MovableObject {
     this.endBossAlert();
     this.endBossAttack();
     this.endBossHurt();
-    this.endbossDead();
+    this.endBossDead();
   }
 
   endBossAlert() {
@@ -91,7 +92,7 @@ class Endboss extends MovableObject {
     setInterval(() => {
       const otherObject = world.character;
       const distance = Math.abs(this.x - otherObject.x);
-      if (distance < 400 && !this.isAttack) {
+      if (distance < 300 && !this.isAttack) {
         this.playAnimation(this.IMAGES_ATTACK);
         this.x -= 10;
       }
@@ -101,21 +102,23 @@ class Endboss extends MovableObject {
   endBossHurt() {
     this.chickenBossHurt_sound.pause();
     setInterval(() => {
-      if (this.isDead) {
-        this.playAnimation(this.IMAGES_DEAD);
-        this.x -= 0.01;
-        this.isHurt = false;
-        this.isDead = false;
-        this.endAnimation();
+      if (this.isHurt) {
+        this.playAnimation(this.IMAGES_HURT);
+        this.x -= 5;
+        this.isAlert = true;
+        this.isAttack = true;
+        if (soundOn) {
+          this.chickenBossHurt_sound.play();
+        }
       }
     }, 200);
   }
 
-  endbossDead() {
+  endBossDead() {
     this.chickenBossDead_sound.pause();
     setInterval(() => {
         if (this.isDead) {
-            this.playanimation(this.imagesDead);
+            this.playAnimation(this.IMAGES_DEAD);
             this.x -= 0.01;
             this.isHurt = false;
             this.isDead = false;
@@ -129,7 +132,7 @@ class Endboss extends MovableObject {
       this.chickenBossDead_sound.play();
     }
     setTimeout(() => {
-      document.getElementById("gameOver").classList.remove("d-none");
+      document.getElementById("yourWin").classList.remove("d-none");
       gameAudio.pause();
     }, 3000);
   }

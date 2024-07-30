@@ -68,7 +68,7 @@ class World {
           enemy.isDead = true;
         } else {
           this.character.hit();
-          this.statusBarHealt.setPercetage(this.character.energy);
+          this.statusBarHealt.setPercet(this.character.energy);
         }
       }
     });
@@ -107,10 +107,10 @@ class World {
         bottle.isBottleSplash = true;
         bottle.stopToMoveBottle = true;
         this.hitInformationEnboss();
-        if (this.hitCount >= 25) {
+        if (this.hitCount >= 20) {
           this.endboss.isHurt = true;
         }
-        if (this.hitCount >= 45) {
+        if (this.hitCount >= 30) {
           this.endboss.isDead = true;
         }
       }
@@ -122,7 +122,7 @@ class World {
   hitInformationEnboss() {
     this.hitCount++;
     this.character.hitEndboss();
-    this.statusBarEndboss.setPercentageEndboss(this.character.energyEndboss);
+    this.statusBarEndboss.setPercent(this.endboss.energyEndboss);
   }
 
 
@@ -130,7 +130,7 @@ class World {
   checkCollisionsEndboss() {
     if (this.character.isColliding(this.endboss)) {
       this.character.hit();
-      this.statusBarHealt.setPercentage(this.character.energy);
+      this.statusBarHealt.setPercet(this.character.energy);
     }
   }
 
