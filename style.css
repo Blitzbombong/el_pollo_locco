@@ -154,15 +154,16 @@ canvas {
     margin-top: 0;
 }
 
-.closeInfo {
+.closeInfo i {
     position: absolute;
-    top: 0%;
+    top: 4%;
     left: 92%;
-    color: white;
+    color: #FFA300;
     cursor: pointer;
+    transition: all 200ms ease-in-out;
 }
 
-.closeInfo:hover {
+.closeInfo i:hover {
     transform: scale(1.2);
 }
 
