@@ -25,7 +25,7 @@ h1 {
     font-size: 100px;
     letter-spacing: 6px;
     text-shadow: 3px 6px 4px rgba(0, 0, 0, 0.5);
-    color:#9e3118;
+    color: #FFA300;
 }
 
 canvas {
@@ -34,8 +34,13 @@ canvas {
     display: block;
 }
 
-.headline {
-    font-size: 30px;
+.headLine {
+    font-size: 150px;
+    position: absolute;
+    top: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .startImage {
@@ -52,6 +57,7 @@ canvas {
 .gameOver {
     background-image: url('img/9_intro_outro_screens/game_over/you lost.png');
     background-size: cover;
+    background-color: rgba(0, 0, 0, 0.714);
     background-position: bottom;
     width: 100%;
     height: 100%;
@@ -60,7 +66,7 @@ canvas {
     left: 0%;
     display: flex;
     justify-content: space-between;
-    border-radius: 20px;
+    border-radius: 5px;
     z-index: 3;
 }
 
@@ -77,7 +83,7 @@ canvas {
     left: 0%;
     display: flex;
     justify-content: space-between;
-    border-radius: 20px;
+    border-radius: 5px;
     z-index: 3;
 }
 
@@ -114,7 +120,7 @@ canvas {
     left: 0%;
     display: flex;
     justify-content: space-between;
-    border-radius: 20px;
+    border-radius: 5px;
     z-index: 4;
     flex-direction: column;
     justify-content: center;
@@ -143,7 +149,7 @@ canvas {
 
 .gameInfoMainText {
     font-size: 3rem;
-    color: #FFD101;
+    color: #FFA300;
     text-align: center;
     margin-top: 0;
 }
@@ -179,31 +185,41 @@ canvas {
     top: 0px;
 }
 
+.menuBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3%;
+    width: 100%;
+    padding-left: 1%;
+    padding-right: 2%;
+}
+
 .startButton {
-    right: 77%;
-    top: 6%;
     z-index: 2;
     width: 110px;
     height: 55px;
-    position: absolute;
-    padding: 10px 40px 10px 40px;
-    border-radius: 100%;
-    border: 3px solid black;
-    color: #e9e7ee;
-    background: #449ccf;
+    background: transparent;
     cursor: pointer;
     transition: all 200ms ease-in-out;
-    font-family: 'Smokum', 'Courier New', Courier, monospace;
-    font-size: 30px;
+    border: none;
+    
+}
+
+.stB {
+    margin: 0;
+    font-size: 3rem;
+    padding: 5px;
+    font-family: 'gomarice', Arial, Helvetica, sans-serif;
+    color: #FFA300;
+    text-align: center; 
+    cursor: pointer;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .infoGame {
     position: absolute;
-    top: 6%;
-    left: 83%;
+    
     width: 25px;
     height: 25px;
     cursor: pointer;
@@ -227,13 +243,12 @@ canvas {
 }
 
 .icon-container {
-    position: absolute;
-    top: 4%;
-    left: 79%;
     display: flex;
     width: 120px;
     justify-content: space-between;
     align-items: center;
+    padding: 5px;
+    margin-right: 15px;
 }
 
 h2 {
@@ -243,22 +258,27 @@ h2 {
 }
 
 .icon-container i:first-of-type {
-    font-size: 40px;
-    cursor: pointer;
-    transition: all 200ms ease-in-out;
-}
-
-.icon-container i:nth-of-type(2) {
-    font-size: 22px;
-    cursor: pointer;
-    transition: all 200ms ease-in-out;
-}
-
-.icon-container i:last-of-type {
     font-size: 30px;
     cursor: pointer;
     transition: all 200ms ease-in-out;
-    margin-left: 5px;
+    padding: 5px;
+    color: #FFA300;
+}
+
+.icon-container i:nth-of-type(2) {
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    padding: 5px;
+    color: #FFA300;
+}
+
+.icon-container i:last-of-type {
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    padding: 5px;
+    color: #FFA300;
 }
 
 .icon-container i:hover {
@@ -282,7 +302,7 @@ h2 {
     padding: 2px 30px 2px 30px;
     display: block;
     border-radius: 5px;
-    background-color: #FFD101;
+    background-color: #FFA300;
 }
 
 .mobileControl {

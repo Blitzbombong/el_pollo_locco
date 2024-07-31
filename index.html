@@ -45,20 +45,25 @@
         </canvas>
 
         <div class="startImage" id="startImage">
+            <div class="menuBar">
+                <div>    
+                    <button onclick="startGame()" class="startButton" id="startButton">
+                        <p class="stB">Start</p>
+                    </button>
+                </div>
 
-        </div>
-
-        <button onclick="startGame()" class="startButton" id="startButton">Start</button>
-
-        <div class="icon-container">
-            <i class="bi bi-controller" id="infoGame" onclick="infoGame()"></i>
-            <i class="bi bi-volume-mute" id="playGameSound" onclick="playSound()"></i>
-            <i class="bi bi-arrows-fullscreen" id="fullScreenImage" onclick="fullScreen()"></i>
+                <div class="icon-container">
+                    <i class="bi bi-controller" id="infoGame" onclick="infoGame()"></i>
+                    <i class="bi bi-volume-mute" id="playGameSound" onclick="playSound()"></i>
+                    <i class="bi bi-arrows-fullscreen" id="fullScreenImage" onclick="fullScreen()"></i>
+                </div>
+            </div>
         </div>
 
         <div class="gameOver d-none" id="gameOver">
             <img class="gameOverImg">
             <button class="backToMenuButton" id="backToMenuButton" onclick="backToMenuButton()">Back to Menu</button>
+            <button onclick="startGame()" class="startButton" id="startButton">Start</button>
         </div>
 
         <div class="yourWin d-none" id="yourWin">
@@ -85,7 +90,7 @@
                 <p style="padding-left: 7px; font-weight: bold">S</p>
                 <p>Throw Bottle</p>
             </div>
-            <p style="color: #FFD101; margin-top: 2rem;">Alert! Be aware that you need five bottles hits to kill the endboss</p>
+            <p style="color: #FFA300; margin-top: 2rem;">Alert! Be aware that you need five bottles hits to kill the endboss</p>
             <p class="closeInfo" id="closeInfo" onclick="closeInfo()">X</p>
 
         </div>
