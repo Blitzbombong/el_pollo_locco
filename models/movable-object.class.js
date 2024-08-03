@@ -4,7 +4,7 @@ class MovableObject extends DrawableObject {
   otherDirection = false;
   speedY = 0;
   energy = 100;
-  energyEndBoss = 100;
+  energyEndboss = 100;
   crowdBottles = 0;
   crowdCoints = 0;
   lastHit = 0;
@@ -66,10 +66,9 @@ class MovableObject extends DrawableObject {
   }
 
   hitEndboss() {
-    this.energyEndboss -= 5;
+    this.energyEndboss -= 1.7;
     if (this.energyEndboss < 0) {
       this.energyEndboss = 0;
-    }else {
       this.lastHit = new Date().getTime();
     }
   }
@@ -96,9 +95,6 @@ class MovableObject extends DrawableObject {
   }
 
   endPlayAnimation() {
-    if (soundOn) {
-      this.chicken_sound.play();
-    }
     this.y = 410;
     this.speed = 0;
     setTimeout(() => {

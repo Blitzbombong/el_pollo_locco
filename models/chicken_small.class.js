@@ -4,7 +4,7 @@ class Chickensmall extends MovableObject {
   y = 360;
   x = 50;
   isDead = false;
-  chicken_sound = new Audio("audio/chiken-small.mp3");
+  
 
   offset = {
     top: 5,
@@ -34,7 +34,6 @@ class Chickensmall extends MovableObject {
 
   //animate the chicken than it is walk and dead
   imgAnimate() {
-    this.chicken_sound.pause();
     setInterval(() => {
       if (!this.isDead) {
         this.playAnimation(this.IMAGE_WALKING);

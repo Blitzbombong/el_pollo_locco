@@ -3,7 +3,7 @@ class Chicken extends MovableObject {
   height = 80;
   y = 335;
   isDead = false;
-  chicken_sound = new Audio("audio/chicken.mp3");
+
 
   IMAGES_WALKING = [
     "img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
@@ -27,7 +27,7 @@ class Chicken extends MovableObject {
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_DEAD);
     this.x = 200 + Math.random() * 2500; // Plaziert die Chiken auf zufahlige Psition was das Math.random ausrechnet.
-    this.speed = 0.15 + Math.random() * 0.25;
+    this.speed = 0.25 + Math.random() * 0.25;
 
     this.animate();
     this.imgAnimate();
@@ -36,7 +36,6 @@ class Chicken extends MovableObject {
 
   imgAnimate() {
     setInterval(() => {
-      this.chicken_sound.pause();
       if (!this.isDead) {
         this.playAnimation(this.IMAGES_WALKING);
       } else if (this.isDead) {

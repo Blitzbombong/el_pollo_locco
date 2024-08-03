@@ -41,8 +41,11 @@
     <div class="divCanvas" id="divCanvas">
 
         <canvas class="canvas" id="canvas" width="720" height="480">
-
+           
         </canvas>
+        <div class="muteImage d-none" id="muteImage">
+            <i class="bi bi-volume-mute" id="playGameSound" onclick="playSound()"></i>
+        </div>
 
         <div class="startImage" id="startImage">
             <div class="menuBar">
@@ -59,6 +62,8 @@
                 </div>
             </div>
         </div>
+
+        
 
         <div class="gameOver d-none" id="gameOver">
             <img class="gameOverImg">
