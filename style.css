@@ -216,6 +216,9 @@ canvas {
     align-items: center;
     margin-top: 3%;
     padding: 20px;
+    position: absolute;
+    top: 31%;
+    left: -2%;
 }
 
 .startButton {
@@ -223,9 +226,28 @@ canvas {
     height: 55px;
     background: transparent;
     cursor: pointer;
-    transition: all 200ms ease-in-out;
+    
     border: none;
     z-index: 2;
+    cursor: pointer;
+    
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        color: #FFA300;
+    }
+    50% {
+        transform: scale(1.05);
+        color: #79372A;
+        
+    }
+    100% {
+        transform: scale(1);
+        color: #FFA300;
+        
+    }
 }
 
 .stB {
@@ -233,11 +255,15 @@ canvas {
     font-size: 3rem;
     padding: 5px;
     font-family: 'gomarice', Arial, Helvetica, sans-serif;
-    color: #DD6531;
-    text-align: center; 
+    color: #79372A;
+    background-color: transparent;
     cursor: pointer;
-    display: flex;
-    z-index: 5;
+   
+    animation: pulse 2s infinite;
+    outline: none;
+    display: block;
+    align-items: center;
+    justify-content: center;
 }
 
 .infoGame {
@@ -266,7 +292,10 @@ canvas {
 }
 
 .icon-container {
-    
+    position: absolute;
+    top: 6%;
+    left: 40%;
+    z-index: 3;
     display: flex;
     width: 100px;
     justify-content: space-between;
@@ -287,7 +316,7 @@ canvas {
     height: 50;
 }
 
-#playGameSound {
+#playIcon {
     font-size: 40px;
     cursor: pointer;
     transition: all 200ms ease-in-out;
@@ -299,7 +328,7 @@ canvas {
     transform: scale(1.2);
 }
 
-h2 {
+h2.flip-screen-alert {
     display: none;
     color: black;
     text-align: center;
@@ -310,7 +339,7 @@ h2 {
     cursor: pointer;
     transition: all 200ms ease-in-out;
     padding: 5px;
-    color: #DD6531;
+    color: #79372A;
 }
 
 .icon-container i:nth-of-type(2) {
@@ -318,7 +347,7 @@ h2 {
     cursor: pointer;
     transition: all 200ms ease-in-out;
     padding: 5px;
-    color: #DD6531;
+    color: #79372A;
 }
 
 .icon-container i:last-of-type {
@@ -326,7 +355,7 @@ h2 {
     cursor: pointer;
     transition: all 200ms ease-in-out;
     padding: 5px;
-    color: #DD6531;
+    color: #79372A;
 }
 
 .icon-container i:hover {
@@ -387,29 +416,23 @@ h2 {
     .gameInfo div {
         margin-top: 7px;
     }
+
+    h2.flip-screen-alert {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 650px) {
     .divCanvas {
         display: none;
     }
-    .headline {
+    .headLine {
         display: none;
-    }
-    h2 {
-        display: block;
     }
 }
 
 @media screen and (max-height: 820px) {
-    /* .divCanvas {
-        height: 100%;
-        width: 100%;
-        border-radius: 0px;
-    } */
-    .headline {
-        display: none;
-    }
+    
     .canvas {
         width: 100%;
         height: 100%;

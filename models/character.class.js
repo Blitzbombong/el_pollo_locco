@@ -111,7 +111,7 @@ class Character extends MovableObject {
     //setInterval for manimation the character
     setInterval(() => {
       this.characterAninmation();
-    }, 190);
+    }, 100);
   }
   
 
@@ -132,16 +132,27 @@ class Character extends MovableObject {
 
   //function for move the character
   isMove() {
+    this.walk_sound.pause();
+    this.jump_sound.pause();
       if (this.isMoveRight()) {
         this.moveRight();
         this.otherDirection = false;
+        if (soundOn) {
+          this.walk_sound.play();
+        }
       }
       if (this.isMoveLeft()) {
         this.moveLeft();
         this.otherDirection = true;
+        if (soundOn) {
+          this.walk_sound.play();
+        }
       }
       if (this.isJump()) {
         this.jump();
+        if (soundOn) {
+          this.jump_sound.play();
+        }
       }
   }
 
@@ -162,6 +173,7 @@ class Character extends MovableObject {
   characterAninmation() {
     this.hurt_sound.pause();
     this.dead_sound.pause();
+    this.jump_sound.pause();
     if (this.isDead() && !this.isDeaded) {
       this.isCharacterDead();
       this.isMoved = true;
@@ -185,6 +197,12 @@ class Character extends MovableObject {
   //short function for animation then character is jump
   isAboveGroundShortFunction() {
     this.isIdleLong = false;
+    if (this.isAboveGround) {
+      if (soundOn) {
+        this.jump_sound.play();
+      }
+      
+    }
     this.playAnimation(this.IMAGES_JUMPING);
   }
 

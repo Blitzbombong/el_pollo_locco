@@ -15,7 +15,7 @@ function startGame() {
   tip.play();
   document.getElementById('startButton').classList.add('d-none');
   document.getElementById('startImage').classList.add('d-none');
-  document.getElementById('muteImage').classList.remove('d-none');
+  document.getElementById('playGameSound').classList.remove('d-none');
   document.getElementsByClassName("bi-controller")[0].style.visibility = "hidden";
   initLevel();
   canvas = document.getElementById('canvas');

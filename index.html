@@ -43,27 +43,26 @@
         <canvas class="canvas" id="canvas" width="720" height="480">
            
         </canvas>
-        <div class="muteImage d-none" id="muteImage">
-            <i class="bi bi-volume-mute" id="playGameSound" onclick="playSound()"></i>
-        </div>
+        
 
         <div class="startImage" id="startImage">
             <div class="menuBar">
                 <div>    
                     <button onclick="startGame()" class="startButton" id="startButton">
-                        <p class="stB">Start</p>
+                        <p class="stB"><i class="bi bi-play-circle-fill"></i></p>
                     </button>
                 </div>
 
-                <div class="icon-container">
+                
+            </div>
+
+        </div>
+
+        <div class="icon-container">
                     <i class="bi bi-controller" id="infoGame" onclick="infoGame()"></i>
                     <i class="bi bi-volume-mute" id="playGameSound" onclick="playSound()"></i>
                     <i class="bi bi-arrows-fullscreen" id="fullScreenImage" onclick="fullScreen()"></i>
                 </div>
-            </div>
-        </div>
-
-        
 
         <div class="gameOver d-none" id="gameOver">
             <img class="gameOverImg">
