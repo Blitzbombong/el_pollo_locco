@@ -178,6 +178,7 @@ document.addEventListener("fullscreenchange", (event) => {
 
 function renderGameOver() {
   document.getElementById("gameOver").style.display = "flex";
+  gameAudio.pause();
   delete world;
   canvas.style.display = "none";
   document.getElementsByClassName("icon-container")[0].style.display = "none";
@@ -189,11 +190,26 @@ function renderGameOver() {
   }
 }
 
+function renderYourWin() {
+  document.getElementById("yourWin").style.display = "flex";
+  gameAudio.pause();
+  delete world;
+  canvas.style.display = "none";
+  document.getElementsByClassName("icon-container")[0].style.display = "none";
+  if (fullscreen) {
+    document.getElementById("yourWin").classList.add("fullscreen");
+  }
+  if (window.innerHeight < 480) {
+    document.getElementsByClassName("mobile-control-panel")[0].style.display ="none";
+  }
+}
+
 function backToMenuButton() {
   window.location.reload();
   tip.play();
   setTimeout(() => {
     document.getElementById("gameOver").classList.add("d-none");
+    document.getElementById("yourWin").classList.add("d-none");
   }, 2000);
 }
 
@@ -218,6 +234,7 @@ function playSound() {
       icon.classList.remove("bi-volume-mute");
       icon.classList.add("bi-volume-up-fill"); 
       gameAudio.play();
+      gameAudio.volume = 0.2;
       soundOn = true;
     }
 }
